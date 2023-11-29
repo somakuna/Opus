@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('method', ['in', 'out']);
             $table->integer('amount');
-            $table->string('description', 255);
+            $table->text('description');
             $table->foreignId('partner_id');
             $table->foreignId('work_id')->nullable();
             $table->softDeletes();

@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('client', 255);
+            $table->text('client');
             $table->integer('priority');
-            $table->mediumText('description');
-            $table->mediumText('note')->nullable();
+            $table->text('description');
+            $table->text('note')->nullable();
             $table->integer('price')->default(0);
             $table->enum('payment_method', ['Cash', 'R1'])->default('Cash');
             $table->boolean('outsourced')->default(0);

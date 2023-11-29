@@ -17,6 +17,12 @@ class Work extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'client' => 'encrypted',
+        'description' => 'encrypted',
+        'note' => 'encrypted',
+    ];
+
     protected function createdAt(): Attribute
     {
         return Attribute::make(

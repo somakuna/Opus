@@ -9,4 +9,8 @@ class Note extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    
+    protected $casts = [
+        'text' => 'encrypted',
+    ];
 }

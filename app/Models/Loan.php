@@ -17,6 +17,11 @@ class Loan extends Model
 
     protected $guarded = [];
 
+    
+    protected $casts = [
+        'description' => 'encrypted',
+    ];
+
     public function prunable()
     {
         return static::where('deleted_at', '<=', now()->subMonth());
