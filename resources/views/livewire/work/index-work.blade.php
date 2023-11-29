@@ -1,0 +1,371 @@
+<div class="row justify-content-center">
+    @if($works->where('priority', 3))
+    <div class="col-sm-3">
+        <div class="row">
+            @foreach ($works->where('priority', 3) as $work)
+            <div class="col-12 mb-3 bg-danger-subtle shadow">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-50 ">
+                            <div class="col">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-printer"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('work.edit', $work) }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="delete({{$work->id}})">
+                                    <i class="bi bi-recycle"></i>
+                                </a>
+                            </div>
+                            {{-- <div class="col">
+                                <a wire:click.prevent="increasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-left"></i>
+                                </a>
+                            </div> --}}
+                            <div class="col">
+                                <a wire:click.prevent="decreasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
+                                    <i class="bi bi-fast-forward"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
+                                    <i class="bi bi-layers-half"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'ready')" class="col @if($work->ready) text-success @else text-danger @endif">
+                                    <i class="bi bi-check2-all"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'delivered')" class="col @if($work->delivered) text-success @else text-danger @endif">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'paid')" class="col @if($work->paid) text-success @else text-danger @endif">
+                                    <i class="bi bi-currency-euro"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 p-2">
+                        <span class="h3">{{ $work->client }}</span>
+                        <p class="text-secondary" style="font-size:8pt;">[#{{ $work->id }}] {{ $work->created_at }}</p>
+                    </div>
+                    <div class="col-3 p-2 text-center">
+                        <span class="badge border">{{ $work->payment_method }}</span>
+                        <span class="badge border">{{ $work->price }} €</span>
+                    </div>
+                    <div class="col-12">
+                        <p class="">{{ $work->description }}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                    </div>
+                    @if($work->partner)
+                    <div class="col-12" style="font-size:9pt;">
+                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
+                            <div class="col-auto">
+                                @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
+                                @if($work->loan) <i class="bi bi-currency-exchange"></i> @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+    @if($works->where('priority', 2))
+    <div class="col-sm-3">
+        <div class="row">
+            @foreach ($works->where('priority', 2) as $work)
+            <div class="col-12 mb-3 bg-primary-subtle shadow">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-50">
+                            <div class="col">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-printer"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('work.edit', $work) }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="delete({{$work->id}})">
+                                    <i class="bi bi-recycle"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="increasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-left"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="decreasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-25 ">
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
+                                    <i class="bi bi-fast-forward"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
+                                    <i class="bi bi-layers-half"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'ready')" class="col @if($work->ready) text-success @else text-danger @endif">
+                                    <i class="bi bi-check2-all"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'delivered')" class="col @if($work->delivered) text-success @else text-danger @endif">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'paid')" class="col @if($work->paid) text-success @else text-danger @endif">
+                                    <i class="bi bi-currency-euro"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 p-2">
+                        <span class="h3">{{ $work->client }}</span>
+                        <p class="text-secondary" style="font-size:8pt;">[#{{ $work->id }}] {{ $work->created_at }}</p>
+                    </div>
+                    <div class="col-3 p-2 text-center">
+                        <span class="badge border">{{ $work->payment_method }}</span>
+                        <span class="badge border">{{ $work->price }} €</span>
+                    </div>
+                    <div class="col-12">
+                        <p class="">{{ $work->description }}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                    </div>
+                    @if($work->partner)
+                    <div class="col-12" style="font-size:9pt;">
+                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
+                            <div class="col-auto">
+                                @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
+                                @if($work->loan) <i class="bi bi-currency-exchange"></i> @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+    @if($works->where('priority', 1))
+    <div class="col-sm-3">
+        <div class="row">
+            @foreach ($works->where('priority', 1) as $work)
+            <div class="col-12 mb-3 bg-success-subtle shadow">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-50">
+                            <div class="col">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-printer"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('work.edit', $work) }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="delete({{$work->id}})">
+                                    <i class="bi bi-recycle"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="increasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-left"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="decreasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
+                                    <i class="bi bi-fast-forward"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
+                                    <i class="bi bi-layers-half"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'ready')" class="col @if($work->ready) text-success @else text-danger @endif">
+                                    <i class="bi bi-check2-all"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'delivered')" class="col @if($work->delivered) text-success @else text-danger @endif">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'paid')" class="col @if($work->paid) text-success @else text-danger @endif">
+                                    <i class="bi bi-currency-euro"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 p-2">
+                        <span class="h3">{{ $work->client }}</span>
+                        <p class="text-secondary" style="font-size:8pt;">[#{{ $work->id }}] {{ $work->created_at }}</p>
+                    </div>
+                    <div class="col-3 p-2 text-center">
+                        <span class="badge border">{{ $work->payment_method }}</span>
+                        <span class="badge border">{{ $work->price }} €</span>
+                    </div>
+                    <div class="col-12">
+                        <p class="">{{ $work->description }}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                    </div>
+                    @if($work->partner)
+                    <div class="col-12" style="font-size:9pt;">
+                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
+                            <div class="col-auto">
+                                @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
+                                @if($work->loan) <i class="bi bi-currency-exchange"></i> @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+    @if($works->where('priority', 0))
+    <div class="col-sm-3">
+        <div class="row">
+            @foreach ($works->where('priority', 0) as $work)
+            <div class="col-12 mb-3 bg-dark shadow">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-50">
+                            <div class="col">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-printer"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('work.edit', $work) }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="delete({{$work->id}})">
+                                    <i class="bi bi-recycle"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="increasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-left"></i>
+                                </a>
+                            </div>
+                            {{-- <div class="col">
+                                <a wire:click.prevent="decreasePriority({{$work->id}})">
+                                    <i class="bi bi-caret-right"></i>
+                                </a>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
+                                    <i class="bi bi-fast-forward"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
+                                    <i class="bi bi-layers-half"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'ready')" class="col @if($work->ready) text-success @else text-danger @endif">
+                                    <i class="bi bi-check2-all"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'delivered')" class="col @if($work->delivered) text-success @else text-danger @endif">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'paid')" class="col @if($work->paid) text-success @else text-danger @endif">
+                                    <i class="bi bi-currency-euro"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 p-2">
+                        <span class="h3">{{ $work->client }}</span>
+                        <p class="text-secondary" style="font-size:8pt;">[#{{ $work->id }}] {{ $work->created_at }}</p>
+                    </div>
+                    <div class="col-3 p-2 text-center">
+                        <span class="badge border">{{ $work->payment_method }}</span>
+                        <span class="badge border">{{ $work->price }} €</span>
+                    </div>
+                    <div class="col-12">
+                        <p class="">{{ $work->description }}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                    </div>
+                    @if($work->partner)
+                    <div class="col-12" style="font-size:9pt;">
+                        <div class="row bg-warning text-dark justify-content-between">
+                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong></div>
+                            <div class="col-auto @if($work->outsourced) text-decoration-line-through text-dark @endif">Price: {{ $work->outsourced_price }} €</div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+</div>
