@@ -15,26 +15,29 @@
     <div style="margin-bottom: 7mm;">
         <strong style="font-size: 18pt;"> {{ $work->client }} </strong>
         <br>
-        [# {{ $work->id }} ] - {{ date("d/m/Y - H:i") }}
+        [# {{ $work->id }} ] - {{ date("d.m.Y. - H:i") }}
     </div>
     <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
         {{ $work->description }}
     </div>
     @if($work->note)
-        <strong>Napomena:</strong>
-        <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
-        <i>{{ $work->note }}</i>
-        </div>
+    <strong>Napomena:</strong>
+    <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
+      <i>{{ $work->note }}</i>
+    </div>
+    <div>
+      @if($work->price)
+          <p><strong>Cijena:</strong> {{ $work->price }} €</p>
+      @endif
+    </div>
     @endif
-    @if($work->partner)
-        <p><strong>Outsourced to:</strong> {{ $work->partner->name }}</p>
-    @endif
-    @if($work->outsourced_price)
-      <p><strong>Outsource price:</strong> {{ $work->outsourced_price }} €</p>
-    @endif
-    @if($work->price)
-        <p><strong>Cijena:</strong> {{ $work->price }} €</p>
-    @endif
+    <div style="text-align: center">
+      @if($work->partner)
+          <strong>O U T S O U R C E</strong> <br>
+          <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €
+      @endif
+      
+    </div>
   </section>
   <script type="text/javascript">
     window.print();

@@ -45,6 +45,7 @@ class IndexPartner extends Component
         } else {
             Partner::create($validated['partner']);
         }
+        $this->reset();
     }
 
     public function deletePartner($partnerId)

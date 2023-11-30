@@ -77,7 +77,7 @@
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
-                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                        <div class="row bg-warning text-dark justify-content-between">
                             <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
                             <div class="col-auto">
                                 @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
@@ -170,7 +170,7 @@
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
-                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                        <div class="row bg-warning text-dark justify-content-between">
                             <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
                             <div class="col-auto">
                                 @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
@@ -263,7 +263,7 @@
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
-                        <div class="row bg-warning text-dark bg-opacity-75 justify-content-between">
+                        <div class="row bg-warning text-dark justify-content-between">
                             <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
                             <div class="col-auto">
                                 @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
@@ -357,8 +357,11 @@
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
                         <div class="row bg-warning text-dark justify-content-between">
-                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong></div>
-                            <div class="col-auto @if($work->outsourced) text-decoration-line-through text-dark @endif">Price: {{ $work->outsourced_price }} €</div>
+                            <div class="col-auto">Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €</div>
+                            <div class="col-auto">
+                                @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
+                                @if($work->loan) <i class="bi bi-currency-exchange"></i> @endif
+                            </div>
                         </div>
                     </div>
                     @endif
