@@ -72,8 +72,8 @@
                         <span class="badge border">{{ $work->price }} €</span>
                     </div>
                     <div class="col-12">
-                        <p class="">{{ $work->description }}</p>
-                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                        <p class="">{!! nl2br($work->description) !!}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>@endif
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
@@ -165,8 +165,8 @@
                         <span class="badge border">{{ $work->price }} €</span>
                     </div>
                     <div class="col-12">
-                        <p class="">{{ $work->description }}</p>
-                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                        <p class="">{!! nl2br($work->description) !!}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>@endif
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
@@ -258,8 +258,8 @@
                         <span class="badge border">{{ $work->price }} €</span>
                     </div>
                     <div class="col-12">
-                        <p class="">{{ $work->description }}</p>
-                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                        <p class="">{!! nl2br($work->description) !!}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>@endif
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">
@@ -351,8 +351,8 @@
                         <span class="badge border">{{ $work->price }} €</span>
                     </div>
                     <div class="col-12">
-                        <p class="">{{ $work->description }}</p>
-                        @if($work->note) <p class="fst-italic text-secondary">{{ $work->note }}</p>@endif
+                        <p class="">{!! nl2br($work->description) !!}</p>
+                        @if($work->note) <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>@endif
                     </div>
                     @if($work->partner)
                     <div class="col-12" style="font-size:9pt;">

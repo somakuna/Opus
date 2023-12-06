@@ -18,12 +18,12 @@
         [# {{ $work->id }} ] - {{ date("d.m.Y. - H:i") }}
     </div>
     <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
-        {{ $work->description }}
+      {!! nl2br($work->description) !!}
     </div>
     @if($work->note)
     <strong>Napomena:</strong>
     <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
-      <i>{{ $work->note }}</i>
+      <i>{!! nl2br($work->note) !!}</i>
     </div>
     <div>
       @if($work->price)
@@ -31,9 +31,9 @@
       @endif
     </div>
     @endif
-    <div style="text-align: center">
+    <div style="text-align: center; background-color: #000" >
       @if($work->partner)
-          <strong>O U T S O U R C E</strong> <br>
+          <strong>O-U-T-S-O-U-R-C-E</strong> <br>
           <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €
       @endif
       
