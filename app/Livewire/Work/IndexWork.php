@@ -34,7 +34,8 @@ class IndexWork extends Component
         if (! Auth::user())
             abort(403);
         $work = Work::find($id);
-        $work->printed = !$work->printed;
+        //$work->printed = !$work->printed;
+        $work->printed = 1;
         $work->save();
         //return redirect()->action([WorkController::class, 'print'], ['work' => $work]);
         //return redirect('work.print', ['work' => $work]);

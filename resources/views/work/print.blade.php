@@ -21,23 +21,22 @@
       {!! nl2br($work->description) !!}
     </div>
     @if($work->note)
-    <strong>Napomena:</strong>
-    <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
-      <i>{!! nl2br($work->note) !!}</i>
-    </div>
-    <div>
-      @if($work->price)
-          <p><strong>Cijena:</strong> {{ $work->price }} €</p>
-      @endif
+      <strong>Napomena:</strong>
+      <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
+        <i>{!! nl2br($work->note) !!}</i>
+      </div>
+    @endif
+    @if($work->price)
+    <div style="margin-bottom: 7mm;">
+      <strong>Price:</strong> {{ $work->price }} € [{{ $work->payment_method }}]
     </div>
     @endif
-    <div style="text-align: center; background-color: #000" >
-      @if($work->partner)
-          <strong>O-U-T-S-O-U-R-C-E</strong> <br>
-          <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €
-      @endif
-      
+    @if($work->partner)
+    <div style="text-align: center; border: 2px dotted black;">
+      <strong>OUTSOURCE</strong> <br>
+      <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €
     </div>
+    @endif
   </section>
   <script type="text/javascript">
     window.print();

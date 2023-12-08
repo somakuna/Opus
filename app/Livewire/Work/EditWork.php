@@ -49,6 +49,8 @@ class EditWork extends Component
             abort(403);
 
         $validated = $this->validate();
+        if(!$this->work->partner_id)
+            $this->work->partner_id = null;
         $this->work->save($validated);
         // $this->work->save();
         if($this->loan_id) {
