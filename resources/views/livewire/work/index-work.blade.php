@@ -35,12 +35,14 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25">
+                            @if ($work->partner)
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
                                     <i class="bi bi-fast-forward"></i>
                                 </a>
                             </div>
+                            @endif
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
                                     <i class="bi bi-layers-half"></i>
@@ -128,12 +130,14 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-25 ">
+                        <div class="row justify-content-center text-center text-secondary bg-black bg-opacity-25">
+                            @if ($work->partner)
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
                                     <i class="bi bi-fast-forward"></i>
                                 </a>
                             </div>
+                            @endif
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
                                     <i class="bi bi-layers-half"></i>
@@ -221,12 +225,14 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25">
+                            @if ($work->partner)
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
                                     <i class="bi bi-fast-forward"></i>
                                 </a>
                             </div>
+                            @endif
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
                                     <i class="bi bi-layers-half"></i>
@@ -314,12 +320,14 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="row justify-content-center text-center bg-black bg-opacity-25 ">
+                        <div class="row justify-content-center text-center bg-black bg-opacity-25">
+                            @if ($work->partner)
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
                                     <i class="bi bi-fast-forward"></i>
                                 </a>
                             </div>
+                            @endif
                             <div class="col">
                                 <a wire:click.prevent="changeStatus({{$work->id}}, 'design')" class="col @if($work->design) text-success @else text-danger @endif">
                                     <i class="bi bi-layers-half"></i>

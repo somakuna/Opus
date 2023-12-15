@@ -72,7 +72,7 @@
             <thead>
               <tr class="table-striped-bg">
                   <th scope="col" width="40">ID</th>
-                  <th scope="col" width="120" class="text-end">Amount</th>
+                  <th scope="col" width="120" class="text-end">€</th>
                   <th scope="col">Description</th>
                   <th scope="col" width="200">Partner</th>
                   <th scope="col">Date</th>
@@ -87,7 +87,7 @@
                     <td class="@if($loan->method == 'in') text-success @else text-danger @endif text-end" >@money($loan->amount)</td>
                     <td>{{ $loan->description }}</td>
                     <td class="text-secondary">{{ $loan->partner->name ?? '/' }}</td>
-                    <td class="text-secondary">{{ $loan->created_at->format('d.m.Y.') ?? '/' }}</td>
+                    <td class="text-secondary">{{ $loan->created_at->format('d.m.y.') ?? '/' }}</td>
                     <td class="text-center">
                       <a href="" wire:click.prevent="restore({{ $loan->id }})" class="text-secondary"><i class="bi bi-recycle"></i></a> 
                       <a href="" wire:click.prevent="destroy({{ $loan->id }})" class="text-secondary"><i class="bi bi-x-octagon"></i></a>
@@ -99,7 +99,7 @@
                     <td class="@if($loan->method == 'in') text-success @else text-danger @endif text-end" >@money($loan->amount)</td>
                     <td>{{ $loan->description }}</td>
                     <td class="text-secondary">{{ $loan->partner->name ?? '/' }}</td>
-                    <td class="text-secondary">{{ $loan->created_at->format('d.m.Y.') ?? '/' }}</td>
+                    <td class="text-secondary">{{ $loan->created_at->format('d.m.y.') ?? '/' }}</td>
                     <td class="text-center">
                       <a href="" wire:click.prevent="delete({{$loan->id}})" class="text-secondary">
                         <i class="bi bi-trash"></i>

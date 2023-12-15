@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="manifest" href="/img/site.webmanifest">
     <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Fonts -->
@@ -55,38 +55,37 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="bi bi-journals"></i> Works
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('work.index') }}">
-                                        <i class="bi bi-grid"></i> Dashboard
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('work.create') }}">
-                                        <i class="bi bi-journal-plus"></i> Add new
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('work.show_deleted') }}">
-                                        <i class="bi bi-recycle"></i> Deleted works
-                                        </a>
-                                </div>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link link-secondary" href="{{ route('work.index') }}">
+                                    <i class="bi bi-grid"></i> Work board
+                                </a>
+                            </li>
+                            <li class="nav-item link-secondary">
+                                <a class="nav-link" href="{{ route('work.create') }}">
+                                    <i class="bi bi-journal-plus"></i> Add new work
+                                </a>
+                            </li>
+                            <li class="nav-item link-secondary">
+                                <a class="nav-link" href="{{ route('work.show_deleted') }}">
+                                    <i class="bi bi-recycle"></i> Deleted works
+                                </a>
+                            </li>
+                            <li class="nav-item link-secondary">
                                 <a class="nav-link" href="{{ route('loan.index') }}">
                                     <i class="bi bi-currency-exchange"></i> Loans
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item link-secondary">
                                 <a class="nav-link" href="{{ route('note.index') }}">
                                     <i class="bi bi-chat"></i> Notes
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item link-secondary">
                                 <a class="nav-link" href="{{ route('partner.index') }}">
                                     <i class="bi bi-people"></i> Partners
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item link-secondary dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="bi bi-person-down"></i> {{ Auth::user()->name }}
                                 </a>

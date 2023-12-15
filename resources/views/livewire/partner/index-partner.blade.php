@@ -29,8 +29,8 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">All Loans</th>
-                    <th scope="col">All Loans</th>
+                    <th scope="col" class="text-center">Soft Del. Loans</th>
+                    <th scope="col" class="text-center">Hard Del. Loans</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -39,19 +39,19 @@
                     <tr>
                         <td>{{ $partner->name }}</td>
                         <td>{{ $partner->email }}</td>
-                        <td>
+                        <td class="text-center">
                             <a 
                                 href=""
                                 wire:click.prevent="softDeleteAllPartnerLoans({{$partner}})" class="text-danger-emphasis"
                                 wire:confirm="Are you sure you want to soft delete all of partner loans?"
-                            ><i class="bi bi-eraser"></i> Soft delete loans</a>
+                            ><i class="bi bi-eraser"></i></a>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <a 
                                 href=""
                                 wire:click.prevent="forceDeleteAllPartnerLoans({{$partner}})" class="text-danger-emphasis"
                                 wire:confirm="Are you sure you want to hard delete all of partner loans?"
-                            ><i class="bi bi-x-octagon"></i> Hard delete loans</a>
+                            ><i class="bi bi-x-octagon"></i></a>
                         </td>
                         <td>
                             <a href="" wire:click.prevent="editPartner({{ $partner->id }})" class="text-secondary"><i class="bi bi-pencil"></i></button>
