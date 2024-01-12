@@ -34,7 +34,7 @@
             <div class="container-fluid">
                 <div class="col-lg-3">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/img/logo.svg" alt="Logo"/> {{ config('app.name', 'Laravel') }}
+                        <img src="/img/logo.svg" height="40" width="40" alt="Logo"/> {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
