@@ -53,7 +53,6 @@ class IndexLoan extends Component
         if($this->pickedPartnerId)
         {
             $loans = Loan::with('partner')->withTrashed()->where('partner_id', $this->pickedPartnerId)->latest('id')->paginate(20);
-            
             $loans2 = Loan::with('partner')->withTrashed()->where('partner_id', $this->pickedPartnerId)->get();
         }
         else
@@ -96,7 +95,6 @@ class IndexLoan extends Component
             'tooltip.theme' => ['dark'],
 
         ]);
-
 
         return view('livewire.loan.index-loan', [
             'partners' => $partners,
