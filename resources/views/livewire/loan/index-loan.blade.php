@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row g-3">
     <!-- Left Column: Form -->
     <div class="col-md-3">
 
@@ -109,5 +109,11 @@
         </table>
       </div>
       <div>{{ $loans->links() }}</div>  
+    </div>
+    <div class="col-md-12" style="height: 32rem">
+      <livewire:livewire-line-chart
+          key="{{ $lineChartModel->reactiveKey() }}"
+          :line-chart-model="$lineChartModel"
+      />
     </div>
 </div>

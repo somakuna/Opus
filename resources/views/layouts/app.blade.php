@@ -22,8 +22,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Ubuntu" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
-    
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
@@ -113,6 +112,8 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     @livewireScripts
+    @livewireChartsScripts
 </body>
 </html>
