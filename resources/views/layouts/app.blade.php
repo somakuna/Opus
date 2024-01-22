@@ -113,7 +113,6 @@
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <livewire:scripts />
-    @livewireChartsScripts
+    <script src="/vendor/livewire-charts/app.js"></script>
 </body>
 </html>
