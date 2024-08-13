@@ -5,7 +5,7 @@
         <div class="col-12">
           <h3>Create work</h3>
         </div>
-        <div class="col-6">
+        <div class="col-12">
           <div class="form-floating">
             <input id="client" wire:model="client" type="text" class="form-control @error('client') is-invalid @enderror" placeholder="Name">
             <label>Client</label>
@@ -14,7 +14,7 @@
         <div class="col-6">
           <div class="form-floating">
             <select class="form-select @error('priority') is-invalid @enderror" wire:model.live="priority">
-              <option value="0" selected>Low</option>
+              <option value="0">Low</option>
               <option value="1">Medium</option>
               <option value="2">High</option>
               <option value="3">Most important</option>
@@ -22,6 +22,17 @@
             <label class="form-label">Priority</label>
           </div>
         </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <select class="form-select @error('priority') is-invalid @enderror" wire:model.live="source">
+              <option value="Walk in" class="text-warning">Walk in</option>
+              <option value="E-mail" class="text-primary">E-mail</option>
+              <option value="WhatsApp" class="text-success">WhatsApp</option>
+              <option value="Signal" class="text-primary">Signal</option>
+            </select>
+            <label class="form-label">Source</label>
+          </div>
+        </div> 
         <div class="col-12">
           <div class="form-floating">
             <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder="Description" style="height: 100px"></textarea>
@@ -102,7 +113,7 @@
           </div>
         </div>
         <div class="col text-end">
-          <button type="submit" class="btn btn-warning">Create</button>
+          <button type="submit" class="btn btn-primary">Create</button>
         </div>
         <div class="col-auto">
           <div class="text-warning" wire:loading> 

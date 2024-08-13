@@ -30,6 +30,13 @@ class Work extends Model
         );
     }
 
+    protected function deletedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Carbon::create($value)->format('d.m.Y. H:i')
+        );
+    }
+
     public function prunable()
     {
         return static::where('deleted_at', '<=', now()->subMonth());

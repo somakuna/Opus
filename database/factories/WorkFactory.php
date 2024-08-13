@@ -19,6 +19,7 @@ class WorkFactory extends Factory
         return [
             'client' => fake()->company,
             'priority' => fake()->numberBetween(0, 3),
+            'source' => fake()->randomElement(['WhatsApp', 'Signal', 'Walk in', 'E-mail']),
             'description' => fake()->paragraph,
             'note' => fake()->optional()->sentence,
             'price' => fake()->numberBetween(100, 1000),

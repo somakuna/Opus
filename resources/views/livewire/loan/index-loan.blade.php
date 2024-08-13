@@ -8,7 +8,7 @@
           <form>
           <div class="row g-2">
             <div class="col-6">
-                <select wire:model="partner_id" class="form-select text-warning @error('partner_id') is-invalid @enderror">
+                <select wire:model="partner_id" class="form-select text-primary @error('partner_id') is-invalid @enderror">
                   <option value="" selected>-</option>
                   @foreach ($partners as $partner)
                     <option value="{{$partner->id}}">{{$partner->name}}</option>

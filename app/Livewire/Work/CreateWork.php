@@ -13,6 +13,8 @@ class CreateWork extends Component
     public $client;
     #[Rule('required', as: 'Priority')]
     public $priority = '1';
+    #[Rule('required', as: 'Source')]
+    public $source = 'Walk in';
     #[Rule('required', as: 'Description')]
     public $description;
     #[Rule('sometimes', as: 'Note')]

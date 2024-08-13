@@ -16,6 +16,7 @@ class EditWork extends Component
     protected array $rules = [
         'work.client' => 'required',
         'work.priority' => 'required',
+        'work.source' => 'required',
         'work.description' => 'required',
         'work.note' => '',
         'work.price' => '',

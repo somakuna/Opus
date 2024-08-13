@@ -91,8 +91,8 @@ class IndexLoan extends Component
             //$lineChartModel->addSeriesPoint('Out', $loan2->created_at->format('d.m.y.'), $loan2->amount);
         }
         $lineChartModel->setJsonConfig([
-            'grid.column.colors' => ['#1a1d20', '#212529'],
-            'tooltip.theme' => ['dark'],
+            'grid.column.colors' => ['#f1f1f1', '#fbfbfb'],
+            'tooltip.theme' => ['light'],
 
         ]);
 

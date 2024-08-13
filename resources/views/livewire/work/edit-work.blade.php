@@ -4,7 +4,7 @@
       <div class="col-12">
         <h3>Edit work</h3>
       </div>
-      <div class="col-6">
+      <div class="col-12">
         <div class="form-floating">
           <input id="client" wire:model="work.client" type="text"class="form-control" placeholder="Name">
           <label>Client</label>
@@ -15,13 +15,25 @@
         <div class="form-floating">
           <select class="form-select" wire:model="work.priority">
             <option value="0" @selected($work->priority == 0)>Low</option>
-            <option value="1" @selected($work->priortiy == 1)>Medium</option>
-            <option value="2" @selected($work->priortiy == 2)>High</option>
-            <option value="3" @selected($work->priortiy == 3)>Most important</option>
+            <option value="1" @selected($work->priority == 1)>Medium</option>
+            <option value="2" @selected($work->priority == 2)>High</option>
+            <option value="3" @selected($work->priority == 3)>Most important</option>
           </select>
           <label class="form-label">Priority</label>
         </div>
         @error('work.priority')<div class="text-danger"> {{ $message }}</div>@enderror
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-select" wire:model="work.source">
+            <option value="Walk in" class="text-warning" @selected($work->source == 0)>Walk in</option>
+            <option value="E-mail" class="text-primary" @selected($work->source == 1)>E-mail</option>
+            <option value="WhatsApp" class="text-success" @selected($work->source == 2)>WhatsApp</option>
+            <option value="Signal" class="text-primary" @selected($work->source == 3)>Signal</option>
+          </select>
+          <label class="form-label">Source</label>
+        </div>
+        @error('work.source')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
       <div class="col-12">
         <div class="form-floating">
