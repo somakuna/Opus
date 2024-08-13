@@ -73,7 +73,7 @@
                     <div class="col-3 p-2 text-center">
                         @switch($work->source)
                             @case('Walk in')
-                                <span class="badge text-bg-warning">{{ $work->source }}</span>
+                                <span class="badge text-bg-secondary">{{ $work->source }}</span>
                                 @break
                             @case('E-mail')
                                 <span class="badge text-bg-primary">{{ $work->source }}</span>
@@ -183,7 +183,7 @@
                     <div class="col-3 p-2 text-center">
                         @switch($work->source)
                             @case('Walk in')
-                                <span class="badge text-bg-warning">{{ $work->source }}</span>
+                                <span class="badge text-bg-secondary">{{ $work->source }}</span>
                                 @break
                             @case('E-mail')
                                 <span class="badge text-bg-primary">{{ $work->source }}</span>
@@ -293,7 +293,7 @@
                     <div class="col-3 p-2 text-center">
                         @switch($work->source)
                             @case('Walk in')
-                                <span class="badge text-bg-warning">{{ $work->source }}</span>
+                                <span class="badge text-bg-secondary">{{ $work->source }}</span>
                                 @break
                             @case('E-mail')
                                 <span class="badge text-bg-primary">{{ $work->source }}</span>
@@ -403,7 +403,7 @@
                     <div class="col-3 p-2 text-center">
                         @switch($work->source)
                             @case('Walk in')
-                                <span class="badge text-bg-warning">{{ $work->source }}</span>
+                                <span class="badge text-bg-secondary">{{ $work->source }}</span>
                                 @break
                             @case('E-mail')
                                 <span class="badge text-bg-primary">{{ $work->source }}</span>

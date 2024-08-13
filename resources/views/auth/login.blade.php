@@ -6,7 +6,8 @@
         <div class="col-auto">
             <div class="card">
                 <div class="card-header bg-danger-subtle text-center">
-                    <img src="/img/logo.svg" height="30" width="30" style="filter: invert(96%) sepia(35%) saturate(80%) hue-rotate(243deg) brightness(113%) contrast(100%);"> <br>
+                    {{-- <img src="/img/logo.svg" height="30" width="30" style="filter: invert(96%) sepia(35%) saturate(80%) hue-rotate(243deg) brightness(113%) contrast(100%);"> <br> --}}
+                    <img src="/img/logo.svg" height="30" width="30" style="filter: sepia(35%) saturate(80%) hue-rotate(243deg) brightness(113%) contrast(100%);"> <br>
                      {{ __('Authorization process') }}
                 </div>
 

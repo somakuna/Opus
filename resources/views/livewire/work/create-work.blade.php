@@ -25,7 +25,7 @@
         <div class="col-6">
           <div class="form-floating">
             <select class="form-select @error('priority') is-invalid @enderror" wire:model.live="source">
-              <option value="Walk in" class="text-warning">Walk in</option>
+              <option value="Walk in" class="text-secondary">Walk in</option>
               <option value="E-mail" class="text-primary">E-mail</option>
               <option value="WhatsApp" class="text-success">WhatsApp</option>
               <option value="Signal" class="text-primary">Signal</option>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-6">
           <div class="form-floating">
-            <select wire:model.live="partner_id" class="form-select text-warning @error('partner_id') is-invalid @enderror">
+            <select wire:model.live="partner_id" class="form-select text-primary @error('partner_id') is-invalid @enderror">
               <option value="" selected>-</option>
               @foreach ($partners as $partner)
                 <option value="{{$partner->id}}">{{$partner->name}}</option>

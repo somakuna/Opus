@@ -26,7 +26,7 @@
       <div class="col-6">
         <div class="form-floating">
           <select class="form-select" wire:model="work.source">
-            <option value="Walk in" class="text-warning" @selected($work->source == 0)>Walk in</option>
+            <option value="Walk in" class="text-secondary" @selected($work->source == 0)>Walk in</option>
             <option value="E-mail" class="text-primary" @selected($work->source == 1)>E-mail</option>
             <option value="WhatsApp" class="text-success" @selected($work->source == 2)>WhatsApp</option>
             <option value="Signal" class="text-primary" @selected($work->source == 3)>Signal</option>
@@ -68,7 +68,7 @@
       </div>
       <div class="col-6">
         <div class="form-floating">
-          <select wire:model.live="work.partner_id" class="form-select text-warning" @disabled($work->loan)>
+          <select wire:model.live="work.partner_id" class="form-select text-primary" @disabled($work->loan)>
             <option value="" selected>-</option>
             @foreach ($partners as $partner)
               <option value="{{ $partner->id }}" @selected($work->partner_id == $partner->id)>{{ $partner->name }}</option>
