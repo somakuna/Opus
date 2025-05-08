@@ -35,10 +35,11 @@ class WorkController extends Controller
         return view('work.edit', compact('work'));
     }
 
-    public function print(Work $work)
+    public function print(Work $work, $type = false)
     {
         return view('work.print', [
-            'work' => $work
+            'work' => $work,
+            'type' => $type
         ]);
     }
 

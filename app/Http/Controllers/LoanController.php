@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use App\Models\Loan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class LoanController extends Controller
 {
@@ -10,6 +11,11 @@ class LoanController extends Controller
     public function index()
     {
         return view('loan.index');
+    }
+
+    public function search()
+    {
+        return view('loan.search');
     }
 
     public function create()

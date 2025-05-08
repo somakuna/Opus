@@ -145,5 +145,6 @@ class IndexLoan extends Component
         if (! Auth::user())
             abort(403);
         $this->pickedPartnerId = $id;
+        $this->resetPage();
     }
 }

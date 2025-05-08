@@ -8,7 +8,12 @@
                     <div class="col-6">
                         <div class="row justify-content-center text-center text-secondary bg-light bg-opacity-25">
                             <div class="col-auto">
-                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, false]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-receipt"></i>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, true]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
                                     <i class="bi bi-printer"></i>
                                 </a>
                             </div>
@@ -118,7 +123,12 @@
                     <div class="col-6">
                         <div class="row justify-content-center text-center text-secondary bg-light bg-opacity-25">
                             <div class="col-auto">
-                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, false]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-receipt"></i>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, true]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
                                     <i class="bi bi-printer"></i>
                                 </a>
                             </div>
@@ -228,7 +238,12 @@
                     <div class="col-6">
                         <div class="row justify-content-center text-center text-secondary bg-light bg-opacity-25">
                             <div class="col-auto">
-                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, false]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-receipt"></i>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, true]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
                                     <i class="bi bi-printer"></i>
                                 </a>
                             </div>
@@ -259,7 +274,7 @@
                             
                             @if ($work->partner)
                             <div class="col-auto">
-                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif">
+                                <a wire:click.prevent="changeStatus({{$work->id}}, 'outsourced')" class="col @if($work->outsourced) text-success @else text-danger @endif ">
                                     <i class="bi bi-fast-forward"></i>
                                 </a>
                             </div>
@@ -338,7 +353,12 @@
                     <div class="col-6">
                         <div class="row justify-content-center text-center text-secondary bg-light bg-opacity-25">
                             <div class="col-auto">
-                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', $work) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, false]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
+                                    <i class="bi bi-receipt"></i>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a wire:click="print({{$work->id}})" href="{{ route('work.print', [$work, true]) }}" target="_blank" class="@if($work->printed) text-body-emphasis @endif">
                                     <i class="bi bi-printer"></i>
                                 </a>
                             </div>

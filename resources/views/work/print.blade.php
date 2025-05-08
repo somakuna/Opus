@@ -20,7 +20,7 @@
     <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
       {!! nl2br($work->description) !!}
     </div>
-    @if($work->note)
+    @if($work->note && $type)
       <strong>Napomena:</strong>
       <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
         <i>{!! nl2br($work->note) !!}</i>
@@ -31,7 +31,7 @@
       <strong>Price:</strong> {{ $work->price }} € [{{ $work->payment_method }}]
     </div>
     @endif
-    @if($work->partner)
+    @if($work->partner && $type)
     <div style="text-align: center; border: 2px dotted black;">
       <strong>OUTSOURCE</strong> <br>
       <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €

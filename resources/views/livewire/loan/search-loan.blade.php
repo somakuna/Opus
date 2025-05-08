@@ -4,33 +4,14 @@
 
       <div class="row g-2">
         <div class="col-12">
-          <h5>Insert new loan</h5>
+          <h5>Search loans</h5>
           <form>
           <div class="row g-2">
-            <div class="col-6">
-                <select wire:model="partner_id" class="form-select text-primary @error('partner_id') is-invalid @enderror">
-                  <option value="" selected>-</option>
-                  @foreach ($partners as $partner)
-                    <option value="{{$partner->id}}">{{$partner->name}}</option>
-                  @endforeach
-                </select>  
+            <div class="col">   
+                <input wire:model="description" type="text" placeholder="Searching for..." class="form-control  @error('description') is-invalid @enderror" id="floatingInput">
             </div>
-            <div class="col-6">
-                <input wire:model="amount" type="number" placeholder="€" class="form-control text-primary-emphasis @error('amount') is-invalid @enderror" id="floatingInput">   
-            </div>
-            <div class="col-12">   
-                <input wire:model="description" type="text" placeholder="Description" class="form-control  @error('description') is-invalid @enderror" id="floatingInput">
-            </div>
-            <div class="col-auto">
-              <a wire:click.prevent="create('in')" class="btn btn-success"><i class="bi bi-box-arrow-in-right"></i> IN</a>
-            </div>
-            <div class="col-auto">
-              <a wire:click.prevent="create('out')" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> OUT</a>
-            </div>
-            <div class="col-auto">
-              <a class="btn btn-info" href="{{ route('loan.search') }}">
-                <i class="bi bi-search"></i> Search
-            </a>
+            <div class="col-3">
+              <button type="submit" wire:click.prevent="search" class="btn btn-success"><i class="bi bi-search"></i>Search</button>
             </div>
           </div>  
         </form>
@@ -102,15 +83,31 @@
                     </td>
                   </tr>
               @endforeach
+              <tr class="table-secondary fs-4">
+                <td colspan="5">
+                  <span class="me-5">Total</span> 
+                  <span class="me-5">
+                    <span class="badge text-bg-success">
+                      <i class="bi bi-box-arrow-in-right"></i>
+                    </span>
+                    @money($totalIn) </span>
+                  <span class="me-5">
+                    <span class="badge text-bg-danger">
+                      <i class="bi bi-box-arrow-right"></i>
+                    </span>
+                    @money($totalOut)
+                  </span>
+                  <span>
+                    <span class="badge text-bg-secondary">
+                      <i class="bi bi-arrow-down-up"></i>
+                    </span>
+                    @money($totalIn - $totalOut)
+                  </span>
+                </td>
+              </tr>
             </tbody>
         </table>
       </div>
       <div>{{ $loans->links() }}</div>  
-    </div>
-    <div class="col-md-12" style="height: 32rem">
-      <livewire:livewire-line-chart
-          key="{{ $lineChartModel->reactiveKey() }}"
-          :line-chart-model="$lineChartModel"
-      />
     </div>
 </div>

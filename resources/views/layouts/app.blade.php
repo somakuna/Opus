@@ -21,7 +21,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Ubuntu" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=Almarai" rel="stylesheet" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

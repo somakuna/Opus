@@ -26,11 +26,12 @@ Route::middleware('auth')->group(function () {
     // ...
     Route::get('/', [App\Http\Controllers\WorkController::class, 'index'])->name('work.index');
     Route::get('work/show-deleted', [App\Http\Controllers\WorkController::class, 'showDeleted'])->name('work.show_deleted');
-    Route::get('work/{work}/print', [App\Http\Controllers\WorkController::class, 'print'])->name('work.print');
+    Route::get('work/{work}/print/{type?}', [App\Http\Controllers\WorkController::class, 'print'])->name('work.print');
     Route::resource('work', App\Http\Controllers\WorkController::class, ['except' => ['store', 'update', 'destroy']]);
     // routes/web.php
     
     // Loans
+    Route::get('loan/search/', [App\Http\Controllers\LoanController::class, 'search'])->name('loan.search');
     Route::resource('loan', App\Http\Controllers\LoanController::class);
     Route::resource('note', App\Http\Controllers\NoteController::class);
     Route::resource('partner', App\Http\Controllers\PartnerController::class);
