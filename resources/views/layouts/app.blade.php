@@ -56,11 +56,6 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" href="{{ route('work.index') }}">
-                                    <i class="bi bi-grid"></i> Work board
-                                </a>
-                            </li>
                             <li class="nav-item link-secondary">
                                 <a class="nav-link" href="{{ route('work.create') }}">
                                     <i class="bi bi-journal-plus"></i> Add new work
@@ -74,6 +69,11 @@
                             <li class="nav-item link-secondary">
                                 <a class="nav-link" href="{{ route('loan.index') }}">
                                     <i class="bi bi-currency-exchange"></i> Loans
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-secondary" href="{{ route('item.index') }}">
+                                    <i class="bi bi-arrow-down-up"></i> Lendings
                                 </a>
                             </li>
                             <li class="nav-item link-secondary">

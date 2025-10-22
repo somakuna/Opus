@@ -48,10 +48,9 @@ class IndexNote extends Component
         $validated = $this->validate();
         
         $note->update($validated);
-        $this->reset  ();
+        $this->reset();
         // $this->note = '';
     }
-
 
     public function delete($id)
     {

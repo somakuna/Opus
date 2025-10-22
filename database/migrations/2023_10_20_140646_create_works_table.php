@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->text('client');
             $table->integer('priority');
+            $table->integer('sort_order');
             $table->text('description');
             $table->text('note')->nullable();
             $table->integer('price')->default(0);

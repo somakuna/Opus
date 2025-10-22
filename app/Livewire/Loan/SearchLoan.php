@@ -12,9 +12,6 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-
-## TODO 
-## DAKLE NE RADI QUERYIING AKO JE CAST ENCRYPTED KAO NPR DESCRIPTON OVDJE!!!!!!!!
 class SearchLoan extends Component
 {
     use WithPagination;
