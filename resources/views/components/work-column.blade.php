@@ -34,7 +34,7 @@
 
                     {{-- Opis i bilješka --}}
                     <div class="col-12">
-                        <p>{!! nl2br($work->description) !!}</p>
+                        @markdown($work->description)
                         @if($work->note)
                             <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>
                         @endif

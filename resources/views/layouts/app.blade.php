@@ -18,11 +18,11 @@
     <meta name="msapplication-TileColor" content="#a00000">
     <meta name="msapplication-config" content="/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Almarai" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >    
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >   
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
