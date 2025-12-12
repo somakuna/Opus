@@ -1,8 +1,8 @@
 <div>
   <form wire:submit="update">
     <div class="row g-3 align-items-center">
-      <div class="col-12">
-        <h3>Edit work</h3>
+      <div class="col-12 text-center">
+        <h3 class="fw-bold text-secondary">Edit work</h3>
       </div>
       <div class="col-12">
         <div class="form-floating">
@@ -35,28 +35,28 @@
         </div>
         @error('work.source')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-12">
+      <div class="col-md-6">
         <div class="form-floating">
-          <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 100px"></textarea>
+          <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 300px"></textarea>
           <label>Description</label>
         </div>
         @error('work.description')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-12">
+      <div class="col-md-6">
         <div class="form-floating">
-          <textarea class="form-control text-secondary" wire:model="work.note" placeholder="Note"></textarea>
+          <textarea class="form-control text-secondary" wire:model="work.note" placeholder="Note" style="height: 300px"></textarea>
           <label>Note</label>
         </div>
         @error('work.note')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-6">
+      <div class="col-md-3">
         <div class="form-floating">
           <input type="number" wire:model="work.price" class="form-control" placeholder="Price">
           <label>Price</label>
         </div>
         @error('work.price')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-6">
+      <div class="col-md-3">
         <div class="form-floating">
           <select wire:model="work.payment_method" class="form-select">
             <option value="Cash" @selected($work->payment_method == 'Cash')>Cash</option>
@@ -66,7 +66,7 @@
         </div>
         @error('work.payment_method')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-6">
+      <div class="col-md-3">
         <div class="form-floating">
           <select wire:model.live="work.partner_id" class="form-select text-primary" @disabled($work->loan)>
             <option value="" selected>-</option>
@@ -78,7 +78,7 @@
         </div>
         @error('work.partner_id')<div class="text-danger"> {{ $message }}</div>@enderror
       </div>
-      <div class="col-6">
+      <div class="col-md-3">
         <div class="form-floating">
           <input type="number" wire:model.live="work.outsourced_price" class="form-control" placeholder="Outsoruce price" @disabled($work->loan)>
           <label>Outsoruce price</label>

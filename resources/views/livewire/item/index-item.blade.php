@@ -63,7 +63,7 @@
                     <a href="" wire:click.prevent="whatToEdit({{$item}})" class="text-secondary">
                       <i class="bi bi-pen"></i>
                     </a>
-                    <a href="" wire:click.prevent="delete({{$item->id}})" class="text-secondary">
+                    <a href="" wire:click.prevent="delete({{$item->id}})" wire:confirm="Are you sure you want to delete?" class="text-secondary">
                       <i class="bi bi-trash"></i>
                     </a>
                     @endif

@@ -2,8 +2,8 @@
     {{-- <form method="POST" action="{{ route('healthCenter.store') }}" enctype="multipart/form-data"> --}}
     <form wire:submit.prevent="create">
       <div class="row g-3 align-items-center">
-        <div class="col-12">
-          <h3>Create work</h3>
+        <div class="col-12 text-center">
+          <h3 class="fw-bold text-secondary">Create work</h3>
         </div>
         <div class="col-12">
           <div class="form-floating">
@@ -33,25 +33,25 @@
             <label class="form-label">Source</label>
           </div>
         </div> 
-        <div class="col-12">
+        <div class="col-md-6">
           <div class="form-floating">
-            <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder="Description" style="height: 100px"></textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder="Description" style="height: 300px"></textarea>
             <label>Description</label>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-md-6">
           <div class="form-floating">
-            <textarea class="form-control text-secondary @error('note') is-invalid @enderror" wire:model="note" placeholder="Note"></textarea>
+            <textarea class="form-control text-secondary @error('note') is-invalid @enderror" wire:model="note" placeholder="Note" style="height: 300px"></textarea>
             <label>Note</label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-3">
           <div class="form-floating">
             <input type="number" wire:model="price" class="form-control @error('price') is-invalid @enderror" placeholder="Price">
             <label>Price</label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-3">
           <div class="form-floating">
             <select wire:model="payment_method" class="form-select @error('payment_method') is-invalid @enderror">
               <option value="Cash" selected>Cash</option>
@@ -60,10 +60,7 @@
             <label class="form-label">Payment method</label>
           </div>
         </div>
-        <div class="col-12">
-          <hr>
-        </div>
-        <div class="col-6">
+        <div class="col-md-3">
           <div class="form-floating">
             <select wire:model.live="partner_id" class="form-select text-primary @error('partner_id') is-invalid @enderror">
               <option value="" selected>-</option>
@@ -74,7 +71,7 @@
             <label>Partner</label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-3">
           <div class="form-floating">
             <input type="number" wire:model="outsourced_price" class="form-control @error('outsourced_price') is-invalid @enderror" placeholder="Outsoruce price">
             <label>Outsource price</label>
@@ -113,7 +110,7 @@
           </div>
         </div>
         <div class="col text-end">
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-success">Create</button>
         </div>
         <div class="col-auto">
           <div class="text-warning" wire:loading> 

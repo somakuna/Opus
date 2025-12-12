@@ -19,7 +19,7 @@
               @foreach ($works as $work)
                 <tr>
                   <td>{{ $work->client }}</td>
-                  <td>{{ $work->description }}</td>
+                  <td>@markdown($work->description)</td>
                   <td>{{ $work->note }}</td>
                   <td>{{ $work->price }}</td>
                   <td>@if($work->partner) {{ $work->partner->name }} @endif</td>
