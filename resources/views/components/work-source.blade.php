@@ -8,5 +8,4 @@
 @endphp
 
 <span class="badge text-bg-{{ $colors[$work->source] ?? 'secondary' }}">{{ $work->source }}</span>
-<br>
 <span class="badge text-bg-dark">{{ $work->payment_method }} {{ $work->price }} €</span>

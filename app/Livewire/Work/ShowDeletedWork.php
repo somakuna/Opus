@@ -15,7 +15,7 @@ class ShowDeletedWork extends Component
         if (! Auth::user())
             abort(403);
         return view('livewire.work.show-deleted-work',[
-            'works' => Work::onlyTrashed()->with('partner')->get(),
+            'works' => Work::onlyTrashed()->with('partner')->latest()->simplePaginate(50),
         ]);
     }
     
