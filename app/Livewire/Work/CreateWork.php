@@ -74,6 +74,7 @@ class CreateWork extends Component
         if (! Auth::user())
             abort(403);
         $validated = $this->validate();
+        unset($validated['loan_id']); // remove it
         $work = Work::create($validated);
         if($this->loan_id) {
             $work->loan()->create([
