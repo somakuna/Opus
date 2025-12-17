@@ -18,7 +18,7 @@
         [# {{ $work->id }} ] - {{ date("d.m.Y. - H:i") }}
     </div>
     <div style="border: 2px solid black; padding: 1mm; margin-bottom: 7mm;">
-      {!! nl2br($work->description) !!}
+      @markdown($work->description)
     </div>
     @if($work->note && $type)
       <strong>Napomena:</strong>
