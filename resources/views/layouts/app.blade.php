@@ -72,6 +72,12 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link theme-toggle" href="#" onclick="toggleTheme(event)" title="Toggle theme">
+                                <i class="bi bi-moon-fill theme-icon-dark"></i>
+                                <i class="bi bi-sun-fill theme-icon-light d-none"></i>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
@@ -100,5 +106,23 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/vendor/livewire-charts/app.js"></script>
+    <script>
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            document.querySelectorAll('.theme-icon-dark').forEach(el => el.classList.toggle('d-none', theme === 'dark'));
+            document.querySelectorAll('.theme-icon-light').forEach(el => el.classList.toggle('d-none', theme === 'light'));
+        }
+
+        function toggleTheme(e) {
+            e.preventDefault();
+            const current = document.documentElement.getAttribute('data-bs-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', next);
+            applyTheme(next);
+        }
+
+        // Apply saved theme on load
+        applyTheme(localStorage.getItem('theme') || 'light');
+    </script>
 </body>
 </html>
