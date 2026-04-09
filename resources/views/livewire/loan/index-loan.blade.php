@@ -1,103 +1,97 @@
 <div class="row g-3">
-    <!-- Left Column: Form -->
+    <!-- Left Column: Form + Summary -->
     <div class="col-md-3">
-
-      <div class="row g-2">
-        <div class="col-12">
-          <h5>Insert new loan</h5>
-          <form>
+      <div class="panel mb-3">
+        <h5 class="panel-title"><i class="bi bi-plus-circle"></i> New loan</h5>
+        <form>
           <div class="row g-2">
             <div class="col-6">
-                <select wire:model="partner_id" class="form-select text-primary @error('partner_id') is-invalid @enderror">
-                  <option value="" selected>-</option>
+                <select wire:model="partner_id" class="form-select @error('partner_id') is-invalid @enderror">
+                  <option value="" selected>Partner</option>
                   @foreach ($partners as $partner)
                     <option value="{{$partner->id}}">{{$partner->name}}</option>
                   @endforeach
-                </select>  
+                </select>
             </div>
             <div class="col-6">
-                <input wire:model="amount" type="number" placeholder="€" class="form-control text-primary-emphasis @error('amount') is-invalid @enderror" id="floatingInput">   
+                <input wire:model="amount" type="number" placeholder="Amount &euro;" class="form-control @error('amount') is-invalid @enderror">
             </div>
-            <div class="col-12">   
-                <input wire:model="description" type="text" placeholder="Description" class="form-control  @error('description') is-invalid @enderror" id="floatingInput">
+            <div class="col-12">
+                <input wire:model="description" type="text" placeholder="Description" class="form-control @error('description') is-invalid @enderror">
             </div>
-            <div class="col-auto">
-              <a wire:click.prevent="create('in')" class="btn btn-success"><i class="bi bi-box-arrow-in-right"></i> IN</a>
+            <div class="col-12 d-flex gap-2">
+              <a wire:click.prevent="create('in')" class="btn btn-success btn-sm flex-fill">
+                <i class="bi bi-box-arrow-in-right"></i> IN
+              </a>
+              <a wire:click.prevent="create('out')" class="btn btn-danger btn-sm flex-fill">
+                <i class="bi bi-box-arrow-right"></i> OUT
+              </a>
+              <a class="btn btn-outline-secondary btn-sm" href="{{ route('loan.search') }}">
+                <i class="bi bi-search"></i>
+              </a>
             </div>
-            <div class="col-auto">
-              <a wire:click.prevent="create('out')" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> OUT</a>
-            </div>
-            <div class="col-auto">
-              <a class="btn btn-info" href="{{ route('loan.search') }}">
-                <i class="bi bi-search"></i> Search
-            </a>
-            </div>
-          </div>  
+          </div>
         </form>
-        </div>
-        <div class="col-12">
-          <table class="table table-sm table-striped">
-            <thead>
+      </div>
+
+      <div class="modern-table">
+        <table class="table table-sm mb-0">
+          <thead>
+            <tr>
+              <th class="text-center" width="30"></th>
+              <th>Partner</th>
+              <th class="text-center text-muted">#</th>
+              <th class="text-end">In</th>
+              <th class="text-end">Out</th>
+              <th class="text-end">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($partners as $partner)
+              @if ($partner->loans->isNotEmpty())
               <tr>
-                <th scope="col" class="text-center"><i class="bi bi-arrow-down"></i></th>
-                <th scope="col">Partner</th>
-                <th scope="col" class="text-center text-muted">Loans</th>
-                <th scope="col" class="text-end">In</th>
-                <th scope="col" class="text-end">Out</th>
-                <th scope="col" class="text-end">Balance</th>
+                <td class="text-center">
+                  <a href="" wire:click.prevent="filterLoansByClient({{$partner->id}})" class="action-btn" style="width:auto;height:auto"><i class="bi bi-funnel"></i></a>
+                </td>
+                <td>{{ $partner->name }}</td>
+                <td class="text-muted text-center">{{ $partner->loans->count() }}</td>
+                <td class="text-end text-sm">@money($partner->loans->where('method', 'in')->sum('amount'))</td>
+                <td class="text-end text-sm">@money($partner->loans->where('method', 'out')->sum('amount'))</td>
+                <td class="text-end fw-semibold @if($partner->balance() >= 0) text-success @else text-danger @endif">@money($partner->balance())</td>
               </tr>
-            </thead>
-            <tbody>
-              @foreach ($partners as $partner)
-                @if ($partner->loans->isNotEmpty())
-                <tr>
-                  <td scope="row" class="text-center">                    
-                    <a href="" wire:click.prevent="filterLoansByClient({{$partner->id}})" class="text-primary-emphasis"><i class="bi bi-funnel"></i></a>
-                  </td>
-                  <td scope="row">{{ $partner->name }}</td>
-                  <td class="text-muted text-center">{{ $partner->loans->count() }}</td>
-                  <td class="text-end"> @money($partner->loans->where('method', 'in')->sum('amount')) </td>
-                  <td class="text-end"> @money($partner->loans->where('method', 'out')->sum('amount'))</td>
-                  <td class="text-end @if($partner->balance() >= 0) text-success @else text-danger @endif">@money($partner->balance())</td>
-                </tr>
-                @endif
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+              @endif
+            @endforeach
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Right Column: Table -->
+    <!-- Right Column: Loan Table -->
     <div class="col-md-9">
-      <div class="table-responsive">
-        <h5>Table</h5>
-        <!-- Your table goes here -->
-        <table class="table table-sm">
+      <div class="modern-table">
+        <table class="table table-sm mb-0">
             <thead>
-              <tr class="table-striped-bg">
-                  <th scope="col" width="150">Partner</th>
-                  <th scope="col" width="80" class="text-end">€</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Date</th>
-                  <th scope="col" class="text-center" width="40">Action</th> 
+              <tr>
+                  <th width="150">Partner</th>
+                  <th width="80" class="text-end">Amount</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th class="text-center" width="60">Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($loans as $loan)
                   <tr @if($loan->trashed()) class="table-danger" @endif>
                     <td class="text-secondary">{{ $loan->partner->name ?? '/' }}</td>
-                    <td class="@if($loan->method == 'in') text-success @else text-danger @endif text-end" >@money($loan->amount)</td>
+                    <td class="@if($loan->method == 'in') text-success @else text-danger @endif text-end fw-semibold">@money($loan->amount)</td>
                     <td>{{ $loan->description }}</td>
-                    <td class="text-secondary">{{ $loan->created_at->format('d.m.y.') ?? '/' }}</td>
+                    <td class="text-secondary text-sm">{{ $loan->created_at->format('d.m.y.') ?? '/' }}</td>
                     <td class="text-center">
-                      @if($loan->trashed()) 
-                        <a href="" wire:click.prevent="restore({{ $loan->id }})" class="text-secondary"><i class="bi bi-recycle"></i></a> 
-                        <a href="" wire:click.prevent="destroy({{ $loan->id }})" class="text-secondary"><i class="bi bi-x-octagon"></i></a>
+                      @if($loan->trashed())
+                        <a href="" wire:click.prevent="restore({{ $loan->id }})" class="action-btn" style="width:auto;height:auto"><i class="bi bi-arrow-counterclockwise"></i></a>
+                        <a href="" wire:click.prevent="destroy({{ $loan->id }})" class="action-btn" style="width:auto;height:auto;color:#e74c3c"><i class="bi bi-x-circle"></i></a>
                       @else
-                      <a href="" wire:click.prevent="delete({{$loan->id}})" class="text-secondary">
-                        <i class="bi bi-trash"></i>
-                      </a>
+                        <a href="" wire:click.prevent="delete({{$loan->id}})" class="action-btn" style="width:auto;height:auto"><i class="bi bi-trash3"></i></a>
                       @endif
                     </td>
                   </tr>
@@ -105,8 +99,9 @@
             </tbody>
         </table>
       </div>
-      <div>{{ $loans->links() }}</div>  
+      <div class="mt-3">{{ $loans->links() }}</div>
     </div>
+
     <div class="col-md-12" style="height: 32rem">
       <livewire:livewire-line-chart
           key="{{ $lineChartModel->reactiveKey() }}"

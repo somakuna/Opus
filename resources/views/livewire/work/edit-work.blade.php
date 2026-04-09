@@ -1,136 +1,141 @@
 <div>
   <form wire:submit="update">
-    <div class="row g-3 align-items-center">
-      <div class="col-12 text-center">
-        <h3 class="fw-bold text-secondary">Edit work</h3>
-      </div>
-      <div class="col-12">
-        <div class="form-floating">
-          <input id="client" wire:model="work.client" type="text"class="form-control" placeholder="Name">
-          <label>Client</label>
+    <div class="modern-form">
+      <h3 class="form-header"><i class="bi bi-pencil-square"></i> Edit work</h3>
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="form-floating">
+            <input id="client" wire:model="work.client" type="text" class="form-control" placeholder="Name">
+            <label>Client</label>
+          </div>
+          @error('work.client')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.client')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-6">
-        <div class="form-floating">
-          <select class="form-select" wire:model="work.priority">
-            <option value="0" @selected($work->priority == 0)>Low</option>
-            <option value="1" @selected($work->priority == 1)>Medium</option>
-            <option value="2" @selected($work->priority == 2)>High</option>
-            <option value="3" @selected($work->priority == 3)>Most important</option>
-          </select>
-          <label class="form-label">Priority</label>
+        <div class="col-6">
+          <div class="form-floating">
+            <select class="form-select" wire:model="work.priority">
+              <option value="0" @selected($work->priority == 0)>Low</option>
+              <option value="1" @selected($work->priority == 1)>Medium</option>
+              <option value="2" @selected($work->priority == 2)>High</option>
+              <option value="3" @selected($work->priority == 3)>Most important</option>
+            </select>
+            <label class="form-label">Priority</label>
+          </div>
+          @error('work.priority')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.priority')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-6">
-        <div class="form-floating">
-          <select class="form-select" wire:model="work.source">
-            <option value="Walk in" class="text-secondary" @selected($work->source == 0)>Walk in</option>
-            <option value="E-mail" class="text-primary" @selected($work->source == 1)>E-mail</option>
-            <option value="WhatsApp" class="text-success" @selected($work->source == 2)>WhatsApp</option>
-            <option value="Signal" class="text-primary" @selected($work->source == 3)>Signal</option>
-          </select>
-          <label class="form-label">Source</label>
+        <div class="col-6">
+          <div class="form-floating">
+            <select class="form-select" wire:model="work.source">
+              <option value="Walk in" @selected($work->source == 0)>Walk in</option>
+              <option value="E-mail" @selected($work->source == 1)>E-mail</option>
+              <option value="WhatsApp" @selected($work->source == 2)>WhatsApp</option>
+              <option value="Signal" @selected($work->source == 3)>Signal</option>
+            </select>
+            <label class="form-label">Source</label>
+          </div>
+          @error('work.source')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.source')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-6">
-        <div class="form-floating">
-          <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 300px"></textarea>
-          <label>Description</label>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 250px"></textarea>
+            <label>Description</label>
+          </div>
+          @error('work.description')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.description')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-6">
-        <div class="form-floating">
-          <textarea class="form-control text-secondary" wire:model="work.note" placeholder="Note" style="height: 300px"></textarea>
-          <label>Note</label>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <textarea class="form-control" wire:model="work.note" placeholder="Note" style="height: 250px"></textarea>
+            <label>Note</label>
+          </div>
+          @error('work.note')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.note')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-3">
-        <div class="form-floating">
-          <input type="number" wire:model="work.price" class="form-control" placeholder="Price">
-          <label>Price</label>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <input type="number" wire:model="work.price" class="form-control" placeholder="Price">
+            <label>Price</label>
+          </div>
+          @error('work.price')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.price')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-3">
-        <div class="form-floating">
-          <select wire:model="work.payment_method" class="form-select">
-            <option value="Cash" @selected($work->payment_method == 'Cash')>Cash</option>
-            <option value="R1" @selected($work->payment_method == 'R1')>R1</option>
-          </select>
-          <label class="form-label">Payment method</label>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select wire:model="work.payment_method" class="form-select">
+              <option value="Cash" @selected($work->payment_method == 'Cash')>Cash</option>
+              <option value="R1" @selected($work->payment_method == 'R1')>R1</option>
+            </select>
+            <label class="form-label">Payment method</label>
+          </div>
+          @error('work.payment_method')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.payment_method')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-3">
-        <div class="form-floating">
-          <select wire:model.live="work.partner_id" class="form-select text-primary" @disabled($work->loan)>
-            <option value="" selected>-</option>
-            @foreach ($partners as $partner)
-              <option value="{{ $partner->id }}" @selected($work->partner_id == $partner->id)>{{ $partner->name }}</option>
-            @endforeach
-          </select>
-          <label>Partner</label>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select wire:model.live="work.partner_id" class="form-select" @disabled($work->loan)>
+              <option value="" selected>-</option>
+              @foreach ($partners as $partner)
+                <option value="{{ $partner->id }}" @selected($work->partner_id == $partner->id)>{{ $partner->name }}</option>
+              @endforeach
+            </select>
+            <label>Partner</label>
+          </div>
+          @error('work.partner_id')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.partner_id')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      <div class="col-md-3">
-        <div class="form-floating">
-          <input type="number" wire:model.live="work.outsourced_price" class="form-control" placeholder="Outsoruce price" @disabled($work->loan)>
-          <label>Outsoruce price</label>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <input type="number" wire:model.live="work.outsourced_price" class="form-control" placeholder="Outsource price" @disabled($work->loan)>
+            <label>Outsource price</label>
+          </div>
+          @error('work.outsourced_price')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
-        @error('work.outsourced_price')<div class="text-danger"> {{ $message }}</div>@enderror
-      </div>
-      @if($work->loan) 
-      <div class="col-12">
-        <div class="alert alert-warning text-center" role="alert">
-          A loan has already been inserted for this work. To delete it, please click <a wire:click.prevent="deleteLoan" href="" class="link">here</a>.
-        </div>
-      </div>
-      @endif
-      <div class="col-auto">
-        @if(!empty($work->partner_id))
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="work.outsourced" value="1" @checked($work->outsourced)>
-          <label class="form-check-label">Outsourced</label>
-        </div>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="loan_id" value="1" @disabled($work->loan)>
-          <label class="form-check-label">Add to Loans</label>
+
+        @if($work->loan)
+        <div class="col-12">
+          <div class="alert alert-warning d-flex align-items-center gap-2" role="alert">
+            <i class="bi bi-exclamation-triangle"></i>
+            A loan has already been inserted for this work. To delete it, click <a wire:click.prevent="deleteLoan" href="" class="alert-link">here</a>.
+          </div>
         </div>
         @endif
-      </div>
-      <div class="col-auto">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="work.design" value="1" @checked($work->design)>
-          <label class="form-check-label">Prepared</label>
+
+        <div class="col-12">
+          <div class="d-flex flex-wrap align-items-center gap-4 pt-2">
+            @if(!empty($work->partner_id))
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="work.outsourced" value="1" @checked($work->outsourced)>
+              <label class="form-check-label">Outsourced</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="loan_id" value="1" @disabled($work->loan)>
+              <label class="form-check-label">Add to Loans</label>
+            </div>
+            @endif
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="work.design" value="1" @checked($work->design)>
+              <label class="form-check-label">Prepared</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="work.ready" value="1" @checked($work->ready)>
+              <label class="form-check-label">Ready</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="work.delivered" value="1" @checked($work->delivered)>
+              <label class="form-check-label">Delivered</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" wire:model="work.paid" value="1" @checked($work->paid)>
+              <label class="form-check-label">Paid</label>
+            </div>
+          </div>
         </div>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="work.ready" value="1" @checked($work->ready)>
-          <label class="form-check-label">Ready</label>
+
+        <div class="col-12 d-flex justify-content-between align-items-center pt-2">
+          <div class="loading-spinner" wire:loading>
+            <div class="spinner-border" role="status"></div>
+            <span>Saving...</span>
+          </div>
+          <div class="ms-auto">
+            <button type="submit" class="btn btn-primary px-4">
+              <i class="bi bi-check-lg"></i> Update
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="col-auto">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="work.delivered" value="1" @checked($work->delivered)>
-          <label class="form-check-label">Delivered</label>
-        </div>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" wire:model="work.paid" value="1" @checked($work->paid)>
-          <label class="form-check-label">Paid</label>
-        </div>
-      </div>
-      <div class="col text-end">
-          <button type="submit" class="btn btn-primary">Update</button>
-      </div>
-    </div>
-    <div class="text-primary" wire:loading> 
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
   </form>

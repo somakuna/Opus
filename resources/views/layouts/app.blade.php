@@ -20,94 +20,82 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Fonts -->
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >   
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="bg-dark-subtle">
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-md bg-body shadow-sm">
+        <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
-                <div class="col-lg-3">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/img/logo.svg" height="40" width="40" alt="Logo"/> {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="/img/logo.svg" height="32" width="32" alt="Logo"/> {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse d-lg-flex" id="navbarSupportedContent">
-                    <ul class="navbar-nav col-lg-8 justify-content-lg-center">
-                        <!-- Authentication Links -->
-                        @guest
-                            {{-- @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-                        @else
-                            <li class="nav-item link-secondary">
-                                <a class="nav-link" href="{{ route('work.create') }}">
-                                    <i class="bi bi-journal-plus"></i> Add new work
-                                </a>
-                            </li>
-                            <li class="nav-item link-secondary">
-                                <a class="nav-link" href="{{ route('work.show_deleted') }}">
-                                    <i class="bi bi-recycle"></i> Deleted works
-                                </a>
-                            </li>
-                            <li class="nav-item link-secondary">
-                                <a class="nav-link" href="{{ route('loan.index') }}">
-                                    <i class="bi bi-currency-exchange"></i> Loans
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" href="{{ route('item.index') }}">
-                                    <i class="bi bi-arrow-down-up"></i> Lendings
-                                </a>
-                            </li>
-                            <li class="nav-item link-secondary">
-                                <a class="nav-link" href="{{ route('note.index') }}">
-                                    <i class="bi bi-chat"></i> Notes
-                                </a>
-                            </li>
-                            <li class="nav-item link-secondary">
-                                <a class="nav-link" href="{{ route('partner.index') }}">
-                                    <i class="bi bi-people"></i> Partners
-                                </a>
-                            </li>
-                            <li class="nav-item link-secondary dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="bi bi-person-down"></i> {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @guest
+                    @else
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('work.create') ? 'active' : '' }}" href="{{ route('work.create') }}">
+                                <i class="bi bi-plus-circle"></i> New work
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('work.show_deleted') ? 'active' : '' }}" href="{{ route('work.show_deleted') }}">
+                                <i class="bi bi-archive"></i> Archive
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('loan.*') ? 'active' : '' }}" href="{{ route('loan.index') }}">
+                                <i class="bi bi-wallet2"></i> Loans
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('item.*') ? 'active' : '' }}" href="{{ route('item.index') }}">
+                                <i class="bi bi-arrow-left-right"></i> Lendings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('note.*') ? 'active' : '' }}" href="{{ route('note.index') }}">
+                                <i class="bi bi-journal-text"></i> Notes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}" href="{{ route('partner.index') }}">
+                                <i class="bi bi-people"></i> Partners
+                            </a>
+                        </li>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end shadow-sm border" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right"></i> {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    @endguest
                 </div>
             </div>
         </nav>
-        <main class="my-2">
-            @yield('content')
+        <main>
+            <div class="container-fluid py-3">
+                @yield('content')
+            </div>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
