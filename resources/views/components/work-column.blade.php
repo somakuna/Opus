@@ -25,7 +25,7 @@
             <div class="work-card-header">
                 <div>
                     <h4 class="work-client">{{ $work->client }}</h4>
-                    <div class="work-meta">#{{ $work->id }} &middot; {{ $work->created_at->format('d.m.Y. H:i') }}</div>
+                    <div class="work-meta">#{{ $work->id }} &middot; {{ $work->created_at }}</div>
                 </div>
                 <div class="d-flex flex-column align-items-end gap-1">
                     @include('components.work-source', ['work' => $work])
