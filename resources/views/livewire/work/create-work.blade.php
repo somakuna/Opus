@@ -32,10 +32,9 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-floating">
-              <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder="Description" style="height: 250px"></textarea>
-              <label>Description</label>
-            </div>
+            <label class="form-label fw-semibold text-secondary mb-1">Description</label>
+            <textarea id="create-description" wire:model="description"></textarea>
+            @error('description')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
           </div>
           <div class="col-md-6">
             <div class="form-floating">
@@ -121,4 +120,10 @@
         </div>
       </div>
     </form>
+
+    <script>
+        document.addEventListener('livewire:initialized', function () {
+            window.initMarkdownEditor('#create-description', @this, 'description');
+        });
+    </script>
 </div>

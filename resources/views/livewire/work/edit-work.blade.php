@@ -35,10 +35,8 @@
           @error('work.source')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-6">
-          <div class="form-floating">
-            <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 250px"></textarea>
-            <label>Description</label>
-          </div>
+          <label class="form-label fw-semibold text-secondary mb-1">Description</label>
+          <textarea id="edit-description" wire:model="work.description">{{ $work->description }}</textarea>
           @error('work.description')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-6">
@@ -139,4 +137,10 @@
       </div>
     </div>
   </form>
+
+  <script>
+      document.addEventListener('livewire:initialized', function () {
+          window.initMarkdownEditor('#edit-description', @this, 'work.description');
+      });
+  </script>
 </div>
