@@ -1,59 +1,67 @@
-    {{-- resources/views/components/work-column.blade.php --}}
-    @props(['works', 'priority', 'color'])
+{{-- resources/views/components/work-column.blade.php --}}
+@props(['works', 'priority', 'color', 'label'])
 
-    @if($works->where('priority', $priority)->count())
-    <div class="col-sm-3">
-        <div class="row p-1">
-            @foreach ($works->where('priority', $priority) as $work)
-                <div class="col-12 mb-2 bg-{{ $color }}-subtle shadow">
-                    <div class="row py-1 align-items-center">
+@php
+    $filteredWorks = $works->where('priority', $priority);
+    $colorMap = [
+        'danger'  => '#e74c3c',
+        'warning' => '#f0ad4e',
+        'primary' => '#4f6ef7',
+        'success' => '#2ecc71',
+    ];
+    $dotColor = $colorMap[$color] ?? '#6c757d';
+@endphp
 
-                        <div class="col-8">
-                            <h3 class="fw-bold mb-0">{{ $work->client }}</h3>
-                            <span class="text-secondary small d-block">[#{{ $work->id }}] {{ $work->created_at }}</span>
-                        </div>
-
-                        <div class="col-4 text-center">
-                            @include('components.work-source', ['work' => $work])
-                        </div>
-
-                        {{-- Opis i bilješka --}}
-                        <div class="col-12">
-                            @markdown($work->description)
-                            @if($work->note)
-                                <p class="fst-italic text-secondary">{!! nl2br($work->note) !!}</p>
-                            @endif
-                        </div>
-
-                        {{-- Partner info --}}
-                        @if($work->partner)
-                            <div class="col-12">
-                                <div class="row bg-{{ $color }} bg-opacity-25 text-dark justify-content-between">
-                                    <div class="col-auto small">
-                                        Outsourced to <strong>{{ $work->partner->name }}</strong> for {{ $work->outsourced_price }} €
-                                    </div>
-                                    <div class="col-auto">
-                                        @if($work->outsourced) <i class="bi bi-send-check"></i> @endif 
-                                        @if($work->loan) <i class="bi bi-currency-exchange"></i> @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="col-6">
-                            <div class="row justify-content-center text-center text-secondary ">
-                                @include('components.work-controls', ['work' => $work, 'priority' => $priority])
-                            </div>
-                        </div>
-
-                        {{-- Statusi --}}
-                        <div class="col-6">
-                            <div class="row justify-content-center text-center text-secondary ">
-                                @include('components.work-status', ['work' => $work])
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+@if($filteredWorks->count())
+<div class="col-sm-3 priority-column">
+    <div class="priority-header">
+        <span class="priority-dot" style="background: {{ $dotColor }}"></span>
+        <span class="priority-label">{{ $label }}</span>
+        <span class="priority-count">{{ $filteredWorks->count() }}</span>
     </div>
-    @endif
+
+    @foreach ($filteredWorks as $work)
+        <div class="work-card priority-{{ $priority }}">
+            <div class="work-card-header">
+                <div>
+                    <h4 class="work-client">{{ $work->client }}</h4>
+                    <div class="work-meta">#{{ $work->id }} &middot; {{ $work->created_at->format('d.m.Y. H:i') }}</div>
+                </div>
+                <div class="d-flex flex-column align-items-end gap-1">
+                    @include('components.work-source', ['work' => $work])
+                </div>
+            </div>
+
+            <div class="work-description">
+                @markdown($work->description)
+            </div>
+
+            @if($work->note)
+                <div class="work-note">{!! nl2br(e($work->note)) !!}</div>
+            @endif
+
+            @if($work->partner)
+                <div class="work-partner">
+                    <span>
+                        <i class="bi bi-person-gear"></i>
+                        <strong>{{ $work->partner->name }}</strong> &middot; {{ $work->outsourced_price }} &euro;
+                    </span>
+                    <span>
+                        @if($work->outsourced) <i class="bi bi-send-check text-success"></i> @endif
+                        @if($work->loan) <i class="bi bi-currency-exchange text-primary"></i> @endif
+                    </span>
+                </div>
+            @endif
+
+            <div class="work-actions">
+                <div class="work-controls">
+                    @include('components.work-controls', ['work' => $work, 'priority' => $priority])
+                </div>
+                <div class="work-statuses">
+                    @include('components.work-status', ['work' => $work])
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+@endif

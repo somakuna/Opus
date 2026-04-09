@@ -1,6 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
-    <livewire:loan.index-loan />
-</div>
+<livewire:loan.index-loan />
 @endsection

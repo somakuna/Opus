@@ -1,42 +1,45 @@
-<div class="row g-2">
-  <div class="col-12">
-      <table class="table table-responsive table-light table-sm table-striped">
-          <caption>List of deleted works</caption>
+<div>
+  <h5 class="section-header mb-3"><i class="bi bi-archive"></i> Archived works</h5>
+  <div class="modern-table">
+      <table class="table table-sm mb-0">
           <thead>
-            <tr class="">
-              <th scope="col">Client</th>
-              <th scope="col" style="width:55%">Work desc.</th>
-              <th scope="col">Note</th>
-              <th scope="col">Price</th>
-              <th scope="col">Outsourced</th>
-              <th scope="col">OS price</th>
-              <th scope="col">Created</th>
-              <th scope="col">Deleted</th>
-              <th scope="col" class="text-center">Actions</th>
+            <tr>
+              <th>Client</th>
+              <th style="width:40%">Description</th>
+              <th>Note</th>
+              <th class="text-end">Price</th>
+              <th>Outsourced</th>
+              <th class="text-end">OS price</th>
+              <th>Created</th>
+              <th>Deleted</th>
+              <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($works as $work)
               <tr>
-                <td>{{ $work->client }}</td>
-                <td>@markdown($work->description)</td>
-                <td>{{ $work->note }}</td>
-                <td>{{ $work->price }}</td>
-                <td>@if($work->partner) {{ $work->partner->name }} @endif</td>
-                <td>{{ $work->outsourced_price }}</td>
-                <td>{{ $work->created_at}}</td>
-                <td>{{ $work->deleted_at}}</td>
+                <td class="fw-semibold">{{ $work->client }}</td>
+                <td class="text-sm">@markdown($work->description)</td>
+                <td class="text-secondary text-sm">{{ $work->note }}</td>
+                <td class="text-end">{{ $work->price }}</td>
+                <td class="text-secondary text-sm">@if($work->partner) {{ $work->partner->name }} @endif</td>
+                <td class="text-end">{{ $work->outsourced_price }}</td>
+                <td class="text-secondary text-sm">{{ $work->created_at->format('d.m.y.') }}</td>
+                <td class="text-secondary text-sm">{{ $work->deleted_at->format('d.m.y.') }}</td>
                 <td class="text-center">
-                    <a wire:click.prevent="restore({{$work->id}})" class="text-success"><i class="bi bi-arrow-repeat"></i></a>
-                    <a wire:click.prevent="forceDelete({{$work->id}})" class="text-danger"><i class="bi bi-x-circle"></i></a>
+                    <a wire:click.prevent="restore({{$work->id}})" class="action-btn" style="width:auto;height:auto" title="Restore">
+                      <i class="bi bi-arrow-counterclockwise text-success"></i>
+                    </a>
+                    <a wire:click.prevent="forceDelete({{$work->id}})" class="action-btn" style="width:auto;height:auto" title="Delete permanently">
+                      <i class="bi bi-x-circle text-danger"></i>
+                    </a>
                 </td>
               </tr>
-              @endforeach
+            @endforeach
           </tbody>
         </table>
-        
   </div>
-  <div class="col">
+  <div class="mt-3">
       {{ $works->links() }}
   </div>
 </div>
