@@ -24,8 +24,8 @@
                 <td class="text-end">{{ $work->price }}</td>
                 <td class="text-secondary text-sm">@if($work->partner) {{ $work->partner->name }} @endif</td>
                 <td class="text-end">{{ $work->outsourced_price }}</td>
-                <td class="text-secondary text-sm">{{ $work->created_at->format('d.m.y.') }}</td>
-                <td class="text-secondary text-sm">{{ $work->deleted_at->format('d.m.y.') }}</td>
+                <td class="text-secondary text-sm">{{ $work->created_at }}</td>
+                <td class="text-secondary text-sm">{{ $work->deleted_at }}</td>
                 <td class="text-center">
                     <a wire:click.prevent="restore({{$work->id}})" class="action-btn" style="width:auto;height:auto" title="Restore">
                       <i class="bi bi-arrow-counterclockwise text-success"></i>
