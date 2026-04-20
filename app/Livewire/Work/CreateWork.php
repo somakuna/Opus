@@ -22,7 +22,7 @@ class CreateWork extends Component
     public $ready = 0;
     public $delivered = 0;
     public $paid = 0;
-    public $outsourced_price;
+    public $outsourced_price = 0;
     public $partner_id;
 
     protected $rules = [
@@ -39,7 +39,7 @@ class CreateWork extends Component
         'ready'            => 'nullable|boolean',
         'delivered'        => 'nullable|boolean',
         'paid'             => 'nullable|boolean',
-        'outsourced_price' => 'required_with:partner_id|numeric|min:0',
+        'outsourced_price' => 'nullable|numeric|min:0',
         'partner_id'       => 'nullable|integer|exists:partners,id',
     ];
 

@@ -14,7 +14,7 @@
             <div class="mb-3">
                 <input id="name" type="text" placeholder="Username"
                     class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    name="name" value="{{ old('name') }}" required autocomplete="username" autofocus>
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
