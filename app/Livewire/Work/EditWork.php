@@ -26,7 +26,7 @@ class EditWork extends Component
         'work.ready' => '',
         'work.delivered' => '',
         'work.paid' => '',
-        'work.outsourced_price' => 'required_with:work.partner_id',
+        'work.outsourced_price' => 'nullable|numeric|min:0',
         'work.partner_id' => '',
     ];
 
