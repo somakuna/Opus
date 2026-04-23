@@ -10,6 +10,7 @@ class IndexWork extends Component
 {
 
     public $error;
+    public $viewMode = 'kanban';
 
     public function render()
     {

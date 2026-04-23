@@ -30,7 +30,12 @@ class LoginController extends Controller
 
     protected function username()
     {
-        return 'name';
+        return 'username';
+    }
+
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        return ['name' => $request->input('username'), 'password' => $request->input('password')];
     }
     /**
      * Create a new controller instance.

@@ -5,7 +5,7 @@
         <div class="row g-3">
           <div class="col-12">
             <div class="form-floating">
-              <input id="client" wire:model="client" type="text" class="form-control @error('client') is-invalid @enderror" placeholder="Name">
+              <input id="client" wire:model="client" type="text" class="form-control @error('client') is-invalid @enderror" placeholder=" ">
               <label>Client</label>
             </div>
           </div>
@@ -38,13 +38,13 @@
           </div>
           <div class="col-md-6">
             <div class="form-floating">
-              <textarea class="form-control @error('note') is-invalid @enderror" wire:model="note" placeholder="Note" style="height: 250px"></textarea>
+              <textarea class="form-control @error('note') is-invalid @enderror" wire:model="note" placeholder=" " style="height: 250px"></textarea>
               <label>Note</label>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-floating">
-              <input type="number" wire:model="price" class="form-control @error('price') is-invalid @enderror" placeholder="Price">
+              <input type="number" wire:model="price" class="form-control @error('price') is-invalid @enderror" placeholder=" ">
               <label>Price</label>
             </div>
           </div>
@@ -70,7 +70,7 @@
           </div>
           <div class="col-md-3">
             <div class="form-floating">
-              <input type="number" wire:model="outsourced_price" class="form-control @error('outsourced_price') is-invalid @enderror" placeholder="Outsource price">
+              <input type="number" wire:model="outsourced_price" class="form-control @error('outsourced_price') is-invalid @enderror" placeholder=" ">
               <label>Outsource price</label>
             </div>
           </div>
