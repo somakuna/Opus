@@ -33,7 +33,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-floating">
-              <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder="Description" style="height: 250px"></textarea>
+              <textarea class="form-control @error('description') is-invalid @enderror" wire:model="description" placeholder=" " style="height: 250px"></textarea>
               <label>Description</label>
             </div>
           </div>

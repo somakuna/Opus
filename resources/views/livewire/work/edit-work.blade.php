@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-floating">
-            <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 250px"></textarea>
+            <textarea class="form-control" wire:model="work.description" placeholder=" " style="height: 250px"></textarea>
             <label>Description</label>
           </div>
           @error('work.description')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror

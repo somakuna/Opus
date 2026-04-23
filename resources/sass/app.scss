@@ -178,32 +178,44 @@ main {
     gap: 0.25rem;
   }
 
-  .action-btn {
+}
+
+// ─── Action buttons (shared) ─────────────────────────────
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: $border-radius-sm;
+  color: $gray-500;
+  transition: $transition-base;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.85rem;
+  line-height: 1;
+  flex-shrink: 0;
+
+  i {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: $border-radius-sm;
-    color: $gray-500;
-    transition: $transition-base;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.85rem;
+    line-height: 1;
+  }
 
-    &:hover {
-      background: $gray-100;
-      color: $gray-700;
-    }
+  &:hover {
+    background: $gray-100;
+    color: $gray-700;
+  }
 
-    &.status-on {
-      color: $success;
-      background: rgba($success, 0.08);
-    }
+  &.status-on {
+    color: $success;
+    background: rgba($success, 0.08);
+  }
 
-    &.status-off {
-      color: $gray-400;
-    }
+  &.status-off {
+    color: $gray-400;
+    background: rgba($gray-400, 0.08);
   }
 }
 
@@ -623,13 +635,13 @@ main {
     .work-actions {
       border-top-color: #21262d;
     }
+  }
 
-    .action-btn {
-      color: #484f58;
-      &:hover { background: #21262d; color: #8b949e; }
-      &.status-on { color: #3fb950; background: rgba(#3fb950, 0.1); }
-      &.status-off { color: #30363d; }
-    }
+  .action-btn {
+    color: #484f58;
+    &:hover { background: #21262d; color: #8b949e; }
+    &.status-on { color: #3fb950; background: rgba(#3fb950, 0.1); }
+    &.status-off { color: #484f58; background: rgba(#484f58, 0.15); }
   }
 
   .priority-column {
@@ -726,13 +738,6 @@ main {
       }
 
       td { border-color: #21262d; }
-    }
-
-    .action-btn {
-      color: #484f58;
-      &:hover { background: #21262d; color: #8b949e; }
-      &.status-on { color: #3fb950; background: rgba(#3fb950, 0.1); }
-      &.status-off { color: #30363d; }
     }
 
     .table-danger {
