@@ -5,7 +5,7 @@
       <div class="row g-3">
         <div class="col-12">
           <div class="form-floating">
-            <input id="client" wire:model="work.client" type="text" class="form-control" placeholder="Name">
+            <input id="client" wire:model="work.client" type="text" class="form-control" placeholder=" ">
             <label>Client</label>
           </div>
           @error('work.client')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
@@ -36,21 +36,21 @@
         </div>
         <div class="col-md-6">
           <div class="form-floating">
-            <textarea class="form-control" wire:model="work.description" placeholder="Description" style="height: 250px"></textarea>
+            <textarea class="form-control" wire:model="work.description" placeholder=" " style="height: 250px"></textarea>
             <label>Description</label>
           </div>
           @error('work.description')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-6">
           <div class="form-floating">
-            <textarea class="form-control" wire:model="work.note" placeholder="Note" style="height: 250px"></textarea>
+            <textarea class="form-control" wire:model="work.note" placeholder=" " style="height: 250px"></textarea>
             <label>Note</label>
           </div>
           @error('work.note')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-3">
           <div class="form-floating">
-            <input type="number" wire:model="work.price" class="form-control" placeholder="Price">
+            <input type="number" wire:model="work.price" class="form-control" placeholder=" ">
             <label>Price</label>
           </div>
           @error('work.price')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
@@ -79,7 +79,7 @@
         </div>
         <div class="col-md-3">
           <div class="form-floating">
-            <input type="number" wire:model.live="work.outsourced_price" class="form-control" placeholder="Outsource price" @disabled($work->loan)>
+            <input type="number" wire:model.live="work.outsourced_price" class="form-control" placeholder=" " @disabled($work->loan)>
             <label>Outsource price</label>
           </div>
           @error('work.outsourced_price')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror

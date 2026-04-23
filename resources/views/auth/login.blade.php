@@ -12,10 +12,10 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-3">
-                <input id="name" type="text" placeholder="Username"
-                    class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" required autocomplete="username" autofocus>
-                @error('name')
+                <input id="username" type="text" placeholder="Username"
+                    class="form-control @error('username') is-invalid @enderror"
+                    name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
