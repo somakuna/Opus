@@ -538,6 +538,39 @@ main {
   }
 }
 
+// ─── Circular badges ─────────────────────────────────────
+.circular-type-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: rgba($gray-500, 0.1);
+  color: $gray-700;
+}
+
+.type-license { background: rgba($primary, 0.1); color: darken($primary, 8%); }
+.type-payment { background: rgba($success, 0.1); color: darken($success, 8%); }
+.type-administration { background: rgba($info, 0.1); color: darken($info, 10%); }
+.type-maintenance { background: rgba($warning, 0.1); color: darken($warning, 12%); }
+.type-obligation { background: rgba($danger, 0.1); color: darken($danger, 5%); }
+.type-rent { background: rgba(#8b5cf6, 0.1); color: #7c3aed; }
+.type-internal-process { background: rgba($gray-600, 0.1); color: $gray-700; }
+
+.circular-status-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-active { background: rgba($success, 0.12); color: $success; }
+.status-paused { background: rgba($warning, 0.12); color: darken($warning, 10%); }
+.status-ended { background: rgba($gray-500, 0.12); color: $gray-600; }
+
 // ─── Spinner ─────────────────────────────────────────────
 .loading-spinner {
   display: inline-flex;
@@ -802,6 +835,23 @@ main {
       &:hover { background: #21262d; color: #e6edf3; }
     }
   }
+
+  // Circular badges dark
+  .circular-type-badge {
+    color: #8b949e;
+    background: rgba(#8b949e, 0.12);
+  }
+  .type-license { background: rgba(#79b8ff, 0.12); color: #79b8ff; }
+  .type-payment { background: rgba(#3fb950, 0.12); color: #3fb950; }
+  .type-administration { background: rgba(#79b8ff, 0.12); color: #58a6ff; }
+  .type-maintenance { background: rgba(#d29922, 0.12); color: #d29922; }
+  .type-obligation { background: rgba(#f85149, 0.12); color: #f85149; }
+  .type-rent { background: rgba(#a78bfa, 0.12); color: #a78bfa; }
+  .type-internal-process { background: rgba(#8b949e, 0.15); color: #8b949e; }
+
+  .status-active { background: rgba(#3fb950, 0.15); color: #3fb950; }
+  .status-paused { background: rgba(#d29922, 0.15); color: #d29922; }
+  .status-ended { background: rgba(#484f58, 0.2); color: #8b949e; }
 
   // Text overrides
   .text-secondary { color: #8b949e !important; }

@@ -9,13 +9,25 @@ class ShowDeletedWork extends Component
 {
 
     public $error;
+    public $search = '';
 
     public function render()
     {
         if (! Auth::user())
             abort(403);
-        return view('livewire.work.show-deleted-work',[
-            'works' => Work::onlyTrashed()->with('partner')->latest()->simplePaginate(50),
+
+        $works = Work::onlyTrashed()->with('partner')->latest()->get();
+
+        if ($this->search) {
+            $search = mb_strtolower($this->search);
+            $works = $works->filter(function ($work) use ($search) {
+                return str_contains(mb_strtolower($work->client), $search)
+                    || str_contains(mb_strtolower($work->description ?? ''), $search);
+            })->values();
+        }
+
+        return view('livewire.work.show-deleted-work', [
+            'works' => $works,
         ]);
     }
     

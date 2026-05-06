@@ -37,5 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('note', App\Http\Controllers\NoteController::class);
     Route::resource('partner', App\Http\Controllers\PartnerController::class);
 
+    // Circular
+    Route::resource('circular', App\Http\Controllers\CircularController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 

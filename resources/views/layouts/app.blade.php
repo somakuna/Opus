@@ -66,6 +66,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('circular.*') ? 'active' : '' }}" href="{{ route('circular.index') }}">
+                                <i class="bi bi-arrow-repeat"></i> Circular
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}" href="{{ route('partner.index') }}">
                                 <i class="bi bi-people"></i> Partners
                             </a>
