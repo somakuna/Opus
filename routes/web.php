@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\WorkController::class, 'index'])->name('work.index');
     Route::get('work/show-deleted', [App\Http\Controllers\WorkController::class, 'showDeleted'])->name('work.show_deleted');
     Route::get('work/{work}/print/{type?}', [App\Http\Controllers\WorkController::class, 'print'])->name('work.print');
-    Route::resource('work', App\Http\Controllers\WorkController::class, ['except' => ['store', 'update', 'destroy']]);
+    Route::resource('work', App\Http\Controllers\WorkController::class, ['except' => ['index', 'store', 'update', 'destroy']]);
     // routes/web.php
     
     // Loans
@@ -37,5 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('note', App\Http\Controllers\NoteController::class);
     Route::resource('partner', App\Http\Controllers\PartnerController::class);
 
+    // Circular
+    Route::resource('circular', App\Http\Controllers\CircularController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 

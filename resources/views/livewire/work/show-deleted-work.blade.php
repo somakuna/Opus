@@ -1,5 +1,10 @@
 <div>
-  <h5 class="section-header mb-3"><i class="bi bi-archive"></i> Archived works</h5>
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <h5 class="section-header mb-0"><i class="bi bi-archive"></i> Archived works</h5>
+      <div style="max-width: 320px; flex-grow: 1;">
+          <input type="text" wire:model.live.debounce.300ms="search" class="form-control form-control-sm" placeholder="Search by client or description...">
+      </div>
+  </div>
   <div class="modern-table">
       <table class="table table-sm mb-0">
           <thead>
@@ -39,7 +44,7 @@
           </tbody>
         </table>
   </div>
-  <div class="mt-3">
-      {{ $works->links() }}
-  </div>
+  @if($works->isEmpty() && $search)
+      <div class="text-center text-muted py-3">No results found for "{{ $search }}"</div>
+  @endif
 </div>
