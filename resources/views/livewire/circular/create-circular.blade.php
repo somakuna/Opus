@@ -34,15 +34,15 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-floating">
-                        <input type="date" wire:model="start_date" class="form-control @error('start_date') is-invalid @enderror" placeholder=" ">
-                        <label>Start date</label>
+                        <input type="text" wire:model="start_date" class="form-control @error('start_date') is-invalid @enderror" placeholder=" " inputmode="numeric" maxlength="11">
+                        <label>Start date (dd.mm.yyyy.)</label>
                     </div>
                     @error('start_date')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3">
                     <div class="form-floating">
-                        <input type="date" wire:model="end_date" class="form-control @error('end_date') is-invalid @enderror" placeholder=" ">
-                        <label>End date</label>
+                        <input type="text" wire:model="end_date" class="form-control @error('end_date') is-invalid @enderror" placeholder=" " inputmode="numeric" maxlength="11">
+                        <label>End date (dd.mm.yyyy.)</label>
                     </div>
                     @error('end_date')<div class="text-danger text-sm mt-1">{{ $message }}</div>@enderror
                 </div>
