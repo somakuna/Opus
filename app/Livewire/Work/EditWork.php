@@ -63,7 +63,7 @@ class EditWork extends Component
             ]);
         }
 
-        return redirect()->to('/work');
+        return redirect()->route('work.index');
     }
 
     public function deleteLoan()
