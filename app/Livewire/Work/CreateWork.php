@@ -84,7 +84,7 @@ class CreateWork extends Component
                 'partner_id' => $work->partner_id,
             ]);
         }
-        return redirect()->to('/work');
+        return redirect()->route('work.index');
         //dd($this->client);
     }
 }
