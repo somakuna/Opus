@@ -7,33 +7,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Circular extends Model
+class Expense extends Model
 {
     use HasFactory, HasRecurringSchedule;
 
     protected $guarded = [];
 
     protected $casts = [
-        'client' => 'encrypted',
+        'name' => 'encrypted',
         'description' => 'encrypted',
         'start_date' => 'date',
         'end_date' => 'date',
-        'price' => 'decimal:2',
+        'amount' => 'decimal:2',
     ];
 
-    public function charges(): HasMany
+    public function payments(): HasMany
     {
-        return $this->hasMany(CircularCharge::class);
+        return $this->hasMany(ExpensePayment::class);
     }
 
     /** Alias the schedule trait works against. */
     public function settlements(): HasMany
     {
-        return $this->charges();
+        return $this->payments();
     }
 
     public function occurrenceAmount(): ?float
     {
-        return $this->price === null ? null : (float) $this->price;
+        return $this->amount === null ? null : (float) $this->amount;
     }
 }

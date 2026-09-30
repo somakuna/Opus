@@ -557,6 +557,15 @@ main {
 .type-obligation { background: rgba($danger, 0.1); color: darken($danger, 5%); }
 .type-rent { background: rgba(#8b5cf6, 0.1); color: #7c3aed; }
 .type-internal-process { background: rgba($gray-600, 0.1); color: $gray-700; }
+.type-utilities { background: rgba(#0ea5e9, 0.1); color: #0284c7; }
+.type-software { background: rgba(#6366f1, 0.1); color: #4f46e5; }
+.type-salary { background: rgba(#14b8a6, 0.1); color: #0d9488; }
+.type-insurance { background: rgba(#f97316, 0.1); color: #ea580c; }
+.type-tax { background: rgba($danger, 0.1); color: darken($danger, 5%); }
+.type-lease { background: rgba(#a855f7, 0.1); color: #9333ea; }
+.type-accounting { background: rgba(#0891b2, 0.1); color: #0e7490; }
+.type-internet { background: rgba(#3b82f6, 0.1); color: #2563eb; }
+.type-other { background: rgba($gray-500, 0.1); color: $gray-700; }
 
 .circular-status-badge {
   display: inline-block;
@@ -570,6 +579,154 @@ main {
 .status-active { background: rgba($success, 0.12); color: $success; }
 .status-paused { background: rgba($warning, 0.12); color: darken($warning, 10%); }
 .status-ended { background: rgba($gray-500, 0.12); color: $gray-600; }
+
+// ─── Periodic schedule: counters, occurrence panel ───────
+.schedule-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.summary-tile {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-sm;
+  padding: 0.5rem 0.9rem;
+  min-width: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  .summary-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: $gray-600;
+  }
+
+  .summary-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $gray-900;
+  }
+}
+
+.due-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  background: rgba($primary, 0.08);
+  color: $primary;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba($primary, 0.16);
+    color: darken($primary, 8%);
+  }
+
+  i { font-size: 0.65rem; }
+}
+
+.charged-ratio {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  background: rgba($gray-500, 0.1);
+  color: $gray-700;
+
+  &.has-open { background: rgba($danger, 0.12); color: $danger; }
+  &.all-settled { background: rgba($success, 0.12); color: $success; }
+}
+
+.occurrence-row > td { background: $gray-100; }
+
+.occurrence-panel {
+  padding: 0.75rem 1rem 1rem;
+
+  .occurrence-panel-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: $gray-700;
+    margin-bottom: 0.5rem;
+
+    i { color: $primary; }
+  }
+}
+
+.occurrence-empty {
+  font-size: 0.8rem;
+  color: $gray-600;
+  padding: 0.5rem 0;
+}
+
+.occurrence-scroll {
+  max-height: 22rem;
+  overflow-y: auto;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius;
+  background: $white;
+}
+
+.occurrence-table {
+  margin-bottom: 0;
+
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: $gray-100;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: $gray-600;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  td {
+    font-size: 0.8rem;
+    vertical-align: middle;
+  }
+
+  tr.occurrence-open td { background: rgba($danger, 0.04); }
+}
+
+.settle-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  background: rgba($danger, 0.1);
+  color: $danger;
+  transition: $transition-base;
+
+  &:hover { background: rgba($danger, 0.18); color: darken($danger, 6%); }
+
+  &.is-settled {
+    background: rgba($success, 0.12);
+    color: $success;
+
+    &:hover { background: rgba($success, 0.22); color: darken($success, 6%); }
+  }
+}
 
 // ─── Spinner ─────────────────────────────────────────────
 .loading-spinner {
@@ -849,9 +1006,82 @@ main {
   .type-rent { background: rgba(#a78bfa, 0.12); color: #a78bfa; }
   .type-internal-process { background: rgba(#8b949e, 0.15); color: #8b949e; }
 
+  .type-utilities { background: rgba(#58a6ff, 0.12); color: #58a6ff; }
+  .type-software { background: rgba(#a78bfa, 0.12); color: #a78bfa; }
+  .type-salary { background: rgba(#2dd4bf, 0.12); color: #2dd4bf; }
+  .type-insurance { background: rgba(#fb923c, 0.12); color: #fb923c; }
+  .type-tax { background: rgba(#f85149, 0.12); color: #f85149; }
+  .type-lease { background: rgba(#c084fc, 0.12); color: #c084fc; }
+  .type-accounting { background: rgba(#22d3ee, 0.12); color: #22d3ee; }
+  .type-internet { background: rgba(#79b8ff, 0.12); color: #79b8ff; }
+  .type-other { background: rgba(#8b949e, 0.15); color: #8b949e; }
+
   .status-active { background: rgba(#3fb950, 0.15); color: #3fb950; }
   .status-paused { background: rgba(#d29922, 0.15); color: #d29922; }
   .status-ended { background: rgba(#484f58, 0.2); color: #8b949e; }
+
+  // Periodic schedule dark
+  .summary-tile {
+    background: #161b22;
+    border-color: #21262d;
+
+    .summary-label { color: #8b949e; }
+    .summary-value { color: #e6edf3; }
+  }
+
+  .due-count-badge {
+    background: rgba(#79b8ff, 0.12);
+    color: #79b8ff;
+    &:hover { background: rgba(#79b8ff, 0.2); color: #a5d0ff; }
+  }
+
+  .charged-ratio {
+    background: rgba(#8b949e, 0.15);
+    color: #8b949e;
+
+    &.has-open { background: rgba(#f85149, 0.15); color: #f85149; }
+    &.all-settled { background: rgba(#3fb950, 0.15); color: #3fb950; }
+  }
+
+  .occurrence-row > td { background: #0d1117; }
+
+  .occurrence-panel .occurrence-panel-header {
+    color: #8b949e;
+    i { color: #79b8ff; }
+  }
+
+  .occurrence-empty { color: #8b949e; }
+
+  .occurrence-scroll {
+    background: #161b22;
+    border-color: #21262d;
+  }
+
+  .occurrence-table {
+    color: #c9d1d9;
+
+    thead th {
+      background: #0d1117;
+      border-bottom-color: #21262d;
+      color: #8b949e;
+    }
+
+    td { border-color: #21262d; }
+
+    tr.occurrence-open td { background: rgba(#f85149, 0.06); }
+  }
+
+  .settle-toggle {
+    background: rgba(#f85149, 0.12);
+    color: #f85149;
+    &:hover { background: rgba(#f85149, 0.2); color: #ff7b72; }
+
+    &.is-settled {
+      background: rgba(#3fb950, 0.14);
+      color: #3fb950;
+      &:hover { background: rgba(#3fb950, 0.24); color: #56d364; }
+    }
+  }
 
   // Text overrides
   .text-secondary { color: #8b949e !important; }

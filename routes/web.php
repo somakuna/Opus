@@ -39,5 +39,8 @@ Route::middleware('auth')->group(function () {
 
     // Circular
     Route::resource('circular', App\Http\Controllers\CircularController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Periodic expenses
+    Route::resource('expense', App\Http\Controllers\ExpenseController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 

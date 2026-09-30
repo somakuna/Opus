@@ -71,6 +71,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('expense.*') ? 'active' : '' }}" href="{{ route('expense.index') }}">
+                                <i class="bi bi-cash-stack"></i> Expenses
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}" href="{{ route('partner.index') }}">
                                 <i class="bi bi-people"></i> Partners
                             </a>
