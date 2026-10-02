@@ -1,6 +1,9 @@
 <div>
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-      <h5 class="section-header mb-0"><i class="bi bi-archive"></i> Archived works</h5>
+      <h5 class="section-header mb-0">
+        <i class="bi bi-archive"></i> Archived works
+        <span class="priority-count">{{ $works->total() }}</span>
+      </h5>
       <div style="max-width: 320px; flex-grow: 1;">
           <input type="text" wire:model.live.debounce.300ms="search" class="form-control form-control-sm" placeholder="Search by client or description...">
       </div>
@@ -21,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($works as $work)
+            @forelse ($works as $work)
               <tr>
                 <td class="fw-semibold">{{ $work->client }}</td>
                 <td class="text-sm">@markdown($work->description)</td>
@@ -40,11 +43,21 @@
                     </a>
                 </td>
               </tr>
-            @endforeach
+            @empty
+              <tr>
+                <td colspan="9" class="text-center text-muted py-4">
+                  @if($search)
+                    No results found for "{{ $search }}"
+                  @else
+                    The archive is empty
+                  @endif
+                </td>
+              </tr>
+            @endforelse
           </tbody>
         </table>
   </div>
-  @if($works->isEmpty() && $search)
-      <div class="text-center text-muted py-3">No results found for "{{ $search }}"</div>
+  @if($works->hasPages())
+      <div class="mt-3">{{ $works->links() }}</div>
   @endif
 </div>
