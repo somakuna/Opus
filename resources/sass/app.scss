@@ -79,6 +79,154 @@ main {
   }
 }
 
+// ─── Work board toolbar ──────────────────────────────────
+.work-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.work-toolbar-search {
+  position: relative;
+  flex: 1 1 15rem;
+  max-width: 24rem;
+
+  > i.bi-search {
+    position: absolute;
+    left: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $gray-500;
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .form-control {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .work-search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $gray-500;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover { color: $gray-700; }
+  }
+}
+
+.work-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.filter-chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3em 0.75em;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  color: $gray-600;
+  background: $gray-200;
+  transition: $transition-base;
+
+  &:hover { background: $gray-300; color: $gray-800; }
+
+  &.is-active {
+    background: rgba($primary, 0.12);
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+.result-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $gray-700;
+  white-space: nowrap;
+}
+
+.work-no-results {
+  font-size: 0.85rem;
+  color: $gray-600;
+  background: $white;
+  border: 1px dashed $gray-300;
+  border-radius: $border-radius-lg;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  i { color: $gray-500; }
+  a { cursor: pointer; }
+}
+
+// ─── Work board (kanban) ─────────────────────────────────
+.work-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.priority-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  // Each column scrolls on its own so a tall column no longer stretches the
+  // page and leave the short ones as empty space.
+  max-height: calc(100vh - 12rem);
+}
+
+.column-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.125rem 0.25rem 0.25rem 0.125rem;
+  margin: 0 -0.25rem 0 -0.125rem;
+
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-thumb {
+    background: $gray-300;
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-track { background: transparent; }
+}
+
+.column-empty {
+  font-size: 0.78rem;
+  color: $gray-500;
+  border: 1px dashed $gray-300;
+  border-radius: $border-radius;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 1199.98px) {
+  .work-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .priority-column { max-height: none; }
+  .column-scroll { overflow-y: visible; }
+}
+
+@media (max-width: 767.98px) {
+  .work-board { grid-template-columns: minmax(0, 1fr); }
+  .work-toolbar-right { margin-left: 0; width: 100%; }
+}
+
 // ─── Modern work cards (kanban) ───────────────────────────
 .work-card {
   background: $white;
@@ -178,6 +326,84 @@ main {
     gap: 0.25rem;
   }
 
+  // Four-segment strip along the top edge: design, ready, delivered, paid.
+  // Reads the state of a job at a glance instead of decoding five icons.
+  .work-progress {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    right: 0;
+    height: 3px;
+    display: flex;
+    gap: 1px;
+  }
+
+  .work-progress-seg {
+    flex: 1;
+    background: $gray-200;
+
+    &.is-done { background: $success; }
+  }
+
+  .work-card-identity { min-width: 0; }
+
+  .work-client {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // ─── Compact density ───────────────────────────────────
+  &.is-compact {
+    padding: 0.625rem 0.75rem;
+    margin-bottom: 0.375rem;
+
+    .work-card-header { margin-bottom: 0.25rem; }
+
+    .work-client {
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+
+    .work-meta { font-size: 0.7rem; }
+
+    .source-badge,
+    .price-badge {
+      font-size: 0.65rem;
+      padding: 0.15em 0.45em;
+    }
+
+    .work-snippet {
+      font-size: 0.78rem;
+      color: $gray-600;
+      line-height: 1.4;
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .work-partner-line {
+      font-size: 0.72rem;
+      color: $gray-600;
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .work-actions {
+      margin-top: 0.375rem;
+      padding-top: 0.375rem;
+    }
+
+    .action-btn {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.75rem;
+    }
+  }
 }
 
 // ─── Action buttons (shared) ─────────────────────────────
@@ -225,8 +451,23 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.625rem;
+    padding: 0.25rem 0.125rem 0.5rem;
+    // Stays put while the column scrolls, so you always know which pile
+    // you are looking at.
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #f5f7fa; // matches the page background
+    border-bottom: 1px solid $gray-200;
+
+    .priority-total {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: $gray-600;
+      white-space: nowrap;
+    }
 
     .priority-dot {
       width: 8px;
@@ -837,6 +1078,65 @@ main {
   .priority-column {
     .priority-label { color: #8b949e; }
     .priority-count { background: #21262d; color: #8b949e; }
+
+    .priority-header {
+      background: #0f1117; // matches the dark page background
+      border-bottom-color: #21262d;
+    }
+
+    .priority-total { color: #8b949e; }
+  }
+
+  // Work board toolbar dark
+  .work-toolbar-search {
+    > i.bi-search { color: #484f58; }
+    .work-search-clear {
+      color: #484f58;
+      &:hover { color: #8b949e; }
+    }
+  }
+
+  .filter-chip {
+    background: #21262d;
+    color: #8b949e;
+
+    &:hover { background: #30363d; color: #c9d1d9; }
+
+    &.is-active {
+      background: rgba(#79b8ff, 0.14);
+      color: #79b8ff;
+    }
+  }
+
+  .result-count { color: #c9d1d9; }
+
+  .work-no-results {
+    background: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+
+    i { color: #484f58; }
+  }
+
+  .column-empty {
+    border-color: #21262d;
+    color: #484f58;
+  }
+
+  .column-scroll {
+    &::-webkit-scrollbar-thumb { background: #30363d; }
+  }
+
+  .work-card {
+    .work-progress-seg {
+      background: #21262d;
+      &.is-done { background: #3fb950; }
+    }
+
+    &.is-compact {
+      .work-snippet { color: #8b949e; }
+      .work-partner-line { color: #8b949e; }
+    }
   }
 
   // Badges dark

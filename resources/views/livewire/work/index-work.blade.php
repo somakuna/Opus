@@ -1,21 +1,62 @@
 <div>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <div class="view-toggle btn-group btn-group-sm" role="group">
-            <button wire:click="$set('viewMode', 'kanban')" class="btn {{ $viewMode === 'kanban' ? 'btn-primary' : 'btn-outline-secondary' }}">
-                <i class="bi bi-kanban"></i> Kanban
-            </button>
-            <button wire:click="$set('viewMode', 'table')" class="btn {{ $viewMode === 'table' ? 'btn-primary' : 'btn-outline-secondary' }}">
-                <i class="bi bi-table"></i> Table
-            </button>
+    <div class="work-toolbar mb-3">
+        <div class="work-toolbar-search">
+            <i class="bi bi-search"></i>
+            <input type="text" wire:model.live.debounce.300ms="search" class="form-control form-control-sm"
+                   placeholder="Search client, description, note, partner or #id...">
+            @if($search !== '')
+                <a wire:click.prevent="$set('search', '')" class="work-search-clear" title="Clear"><i class="bi bi-x-lg"></i></a>
+            @endif
+        </div>
+
+        <div class="filter-chips">
+            @foreach(['all' => 'All', 'active' => 'Active', 'unpaid' => 'Unpaid', 'ready' => 'Ready', 'completed' => 'Completed'] as $key => $label)
+                <a wire:click.prevent="$set('filter', '{{ $key }}')"
+                   class="filter-chip {{ $filter === $key ? 'is-active' : '' }}">{{ $label }}</a>
+            @endforeach
+        </div>
+
+        <div class="work-toolbar-right">
+            <span class="result-count">
+                {{ $shownCount }}@if($shownCount !== $totalCount) <span class="text-muted">/ {{ $totalCount }}</span>@endif
+            </span>
+
+            @if($viewMode === 'kanban')
+                <div class="btn-group btn-group-sm view-toggle" role="group">
+                    <button wire:click="$set('density', 'comfortable')" class="btn {{ $density === 'comfortable' ? 'btn-primary' : 'btn-outline-secondary' }}" title="Comfortable">
+                        <i class="bi bi-list-task"></i>
+                    </button>
+                    <button wire:click="$set('density', 'compact')" class="btn {{ $density === 'compact' ? 'btn-primary' : 'btn-outline-secondary' }}" title="Compact">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            @endif
+
+            <div class="btn-group btn-group-sm view-toggle" role="group">
+                <button wire:click="$set('viewMode', 'kanban')" class="btn {{ $viewMode === 'kanban' ? 'btn-primary' : 'btn-outline-secondary' }}">
+                    <i class="bi bi-kanban"></i> Kanban
+                </button>
+                <button wire:click="$set('viewMode', 'table')" class="btn {{ $viewMode === 'table' ? 'btn-primary' : 'btn-outline-secondary' }}">
+                    <i class="bi bi-table"></i> Table
+                </button>
+            </div>
         </div>
     </div>
 
+    @if($shownCount === 0 && $totalCount > 0)
+        <div class="work-no-results">
+            <i class="bi bi-filter-circle"></i>
+            Nothing matches the current search or filter.
+            <a wire:click.prevent="clearFilters" class="ms-1">Clear filters</a>
+        </div>
+    @endif
+
     @if($viewMode === 'kanban')
-        <div class="row g-3">
-            <x-work-column :works="$works" priority="3" color="danger" label="Urgent" />
-            <x-work-column :works="$works" priority="2" color="warning" label="High" />
-            <x-work-column :works="$works" priority="1" color="primary" label="Medium" />
-            <x-work-column :works="$works" priority="0" color="success" label="Low" />
+        <div class="work-board density-{{ $density }}">
+            <x-work-column :works="$works" priority="3" color="danger" label="Urgent" :density="$density" />
+            <x-work-column :works="$works" priority="2" color="warning" label="High" :density="$density" />
+            <x-work-column :works="$works" priority="1" color="primary" label="Medium" :density="$density" />
+            <x-work-column :works="$works" priority="0" color="success" label="Low" :density="$density" />
         </div>
     @else
         <div class="modern-table">
